@@ -35,9 +35,9 @@ in {
   time.timeZone = "Asia/Seoul";
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "fr";
-    xkbVariant = "";
+    variant = "";
   };
 
   services.logind = {
@@ -137,6 +137,7 @@ in {
       };
       enable = true;
     };
+    config.common.default = "*";
     # gtk portal needed to make gtk apps happy
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
@@ -218,11 +219,9 @@ in {
     dotter
     sassc
     glib
-    stylua
     pamixer
     wireguard-tools
     dconf
-    nixfmt
     pavucontrol
     xdg-utils
     htop

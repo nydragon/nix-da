@@ -2,17 +2,11 @@
 , ... }:
 let scripts = import ./scripts { inherit pkgs; };
 in {
-  imports = [
-    ./firefox
-    ./fish
-    #./sway
-    ./neovim
-    ./rofi
-    #./thunderbird
-  ];
+  imports = [ ./firefox ./fish ./sway ./neovim ./rofi ./thunderbird ];
 
   xdg.configFile."gtk-4.0/gtk.css".source =
     "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Frappe-Standard-Blue-Dark/gtk-4.0/gtk.css";
+
   dconf = {
     enable = true;
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
@@ -21,10 +15,11 @@ in {
       uris = [ "qemu:///system" ];
     };
   };
+
   services.blueman-applet.enable = true;
 
   qt.enable = true;
-  qt.platformTheme = "gtk";
+  qt.platformTheme.name = "gtk";
 
   home = {
     inherit stateVersion;

@@ -148,8 +148,7 @@
           '';
         }
         {
-          command =
-            "${scripts.set-background}/bin/set-background -f ${wallpaper}";
+          command = "${set-background}/bin/set-background -f ${wallpaper}";
           always = true;
         }
         {
