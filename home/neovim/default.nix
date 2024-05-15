@@ -36,6 +36,8 @@
         rustfmt # Rust formatter
         shfmt # Shell, Bash etc.
         nixfmt-rfc-style
+        stylua
+
         # Misc
         ripgrep
         rustc
