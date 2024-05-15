@@ -54,7 +54,7 @@ in
       gnome.nautilus
       rofi-power-menu
       lollypop
-      protonmail-bridge-ui
+      protonmail-bridge-gui
 
       # Proprietary
       postman
