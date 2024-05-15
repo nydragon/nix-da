@@ -1,11 +1,24 @@
-{ config, inputs, system, stateVersion, username, homeDirectory, pkgs, unstable
-, ... }:
-let scripts = import ./scripts { inherit pkgs; };
-in {
-  imports = [ ./firefox ./fish ./sway ./neovim ./rofi ./thunderbird ];
+{
+  stateVersion,
+  username,
+  homeDirectory,
+  pkgs,
+  ...
+}:
+let
+  scripts = import ./scripts { inherit pkgs; };
+in
+{
+  imports = [
+    ./firefox
+    ./fish
+    ./sway
+    ./neovim
+    ./rofi
+    ./thunderbird
+  ];
 
-  xdg.configFile."gtk-4.0/gtk.css".source =
-    "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Frappe-Standard-Blue-Dark/gtk-4.0/gtk.css";
+  xdg.configFile."gtk-4.0/gtk.css".source = "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Frappe-Standard-Blue-Dark/gtk-4.0/gtk.css";
 
   dconf = {
     enable = true;
@@ -38,11 +51,11 @@ in {
       thunderbird
       gnome.nautilus
       rofi-power-menu
-      unstable.lollypop
+      lollypop
 
       # Proprietary
-      unstable.postman
-      unstable.mongodb-compass
+      postman
+      mongodb-compass
 
       # CLI tools
       delta
@@ -56,11 +69,11 @@ in {
       lazygit
       fd
       ripgrep
+      swaybg
 
       # Scripts
       scripts.screenshot
       scripts.set-background
-
     ];
     sessionVariables = {
       EDITOR = "nvim";

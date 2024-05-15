@@ -1,4 +1,5 @@
-{ pkgs, config, lib, ... }: {
+{ pkgs, ... }:
+{
   services.swayidle = {
     enable = true;
     events = [

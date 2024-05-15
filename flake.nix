@@ -2,8 +2,7 @@
   description = "Nydragon's configuration'";
 
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs"; };
-    nixpkgs-unstable = { url = "github:nixos/nixpkgs?ref=nixos-unstable"; };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -11,7 +10,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager }:
+  outputs = inputs@{ self, nixpkgs, home-manager }:
     let
       inherit (self) outputs;
 
@@ -22,18 +21,13 @@
         config.allowUnfree = true;
       };
 
-      unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
       lib = nixpkgs.lib;
     in {
       nixosConfigurations = {
         xps9510 = lib.nixosSystem {
           inherit system;
           modules = [ ./hosts/xps9510/configuration.nix ];
-          specialArgs = { inherit inputs outputs system unstable; };
+          specialArgs = { inherit inputs outputs system pkgs; };
         };
       };
     };

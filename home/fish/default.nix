@@ -1,4 +1,5 @@
-{ pkgs, config, lib, ... }: {
+{ ... }:
+{
   programs.fish = {
     enable = true;
     shellAbbrs = {
@@ -12,8 +13,7 @@
     functions = {
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
       nrun = "nix run nixpkgs#$argv[1] -- $argv[2..]";
-      mv-bad-creation-date = ''
-        exiftool -if 'not $CreateDate' -p '$FileName' "$PWD/$argv[1]" | xargs -I {} mv -i "$PWD/$argv[1]/{}" "$argv[2]"'';
+      mv-bad-creation-date = ''exiftool -if 'not $CreateDate' -p '$FileName' "$PWD/$argv[1]" | xargs -I {} mv -i "$PWD/$argv[1]/{}" "$argv[2]"'';
       rename-images = ''
         set -f input "$PWD/$argv[1]"
 

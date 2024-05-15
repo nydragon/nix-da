@@ -1,8 +1,14 @@
-{ pkgs, ... }: {
-  screenshot = with pkgs;
+{ pkgs, ... }:
+{
+  screenshot =
+    with pkgs;
     writeShellApplication {
       name = "screenshot";
-      runtimeInputs = [ slurp wl-clipboard libnotify ];
+      runtimeInputs = [
+        slurp
+        wl-clipboard
+        libnotify
+      ];
       text = ''
         location="$HOME/Pictures/Screenshots/$(date +%Y-%m-%d-%H%M%S)-screenshot.png";
 
@@ -12,11 +18,12 @@
         fi
       '';
     };
-  set-background = pkgs.writers.writeFishBin "set-background" (builtins.readFile
-    (pkgs.fetchurl {
-      url =
-        "https://codeberg.org/Nydragon/scripts/raw/commit/bb7a40545fa5cfce177cdac009d9f46f4823d360/set_background.fish";
-      hash = "sha256-Qoz5nn0tqV6QtsXv9fsOkf3PafL30iO/eIkh8ro6O+c=";
-    }));
-
+  set-background = pkgs.writers.writeFishBin "set-background" (
+    builtins.readFile (
+      pkgs.fetchurl {
+        url = "https://codeberg.org/Nydragon/scripts/raw/commit/bb7a40545fa5cfce177cdac009d9f46f4823d360/set_background.fish";
+        hash = "sha256-Qoz5nn0tqV6QtsXv9fsOkf3PafL30iO/eIkh8ro6O+c=";
+      }
+    )
+  );
 }

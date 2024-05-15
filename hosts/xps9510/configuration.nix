@@ -1,13 +1,20 @@
 # vim:fileencoding=utf-8:foldmethod=marker
-{ config, pkgs, lib, inputs, system, unstable, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
 let
   stateVersion = "23.11";
   username = "nico";
-  hostename = "xps9510";
+  hostname = "xps9510";
   homeDirectory = "/home/${username}";
-
-in {
-  imports = [ # Include the results of the hardware scan.
+in
+{
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
     ../../modules
@@ -17,13 +24,9 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-7adaa102-d438-4e9e-9972-4a3c91b887b3".device =
-    "/dev/disk/by-uuid/7adaa102-d438-4e9e-9972-4a3c91b887b3";
-  networking.hostName = hostename;
+  boot.initrd.luks.devices."luks-7adaa102-d438-4e9e-9972-4a3c91b887b3".device = "/dev/disk/by-uuid/7adaa102-d438-4e9e-9972-4a3c91b887b3";
+  networking.hostName = hostname;
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -52,26 +55,35 @@ in {
 
   xdg.mime = {
     enable = true;
-    defaultApplications = let
-      fileManager = "org.gnome.Nautilus.desktop";
-      browser = "firefox.desktop";
-    in {
-      "inode/directory" = fileManager;
-      "application/zip" = fileManager;
-      "application/pdf" = browser;
-      "x-www-browser" = browser;
-      "text/html" = browser;
-      "image/*" = "org.gnome.Loupe.desktop";
-      "image/png" = "org.gnome.Loupe.desktop";
-      "image/jpeg" = "org.gnome.Loupe.desktop";
-      "x-scheme-handler/http" = browser;
-      "x-scheme-handler/https" = browser;
-    };
+    defaultApplications =
+      let
+        fileManager = "org.gnome.Nautilus.desktop";
+        browser = "firefox.desktop";
+      in
+      {
+        "inode/directory" = fileManager;
+        "application/zip" = fileManager;
+        "application/pdf" = browser;
+        "x-www-browser" = browser;
+        "text/html" = browser;
+        "image/*" = "org.gnome.Loupe.desktop";
+        "image/png" = "org.gnome.Loupe.desktop";
+        "image/jpeg" = "org.gnome.Loupe.desktop";
+        "x-scheme-handler/http" = browser;
+        "x-scheme-handler/https" = browser;
+      };
   };
 
   home-manager.users.${username} = import ../../home {
-    inherit config pkgs system inputs stateVersion username homeDirectory
-      unstable;
+    inherit
+      config
+      pkgs
+      system
+      inputs
+      stateVersion
+      username
+      homeDirectory
+      ;
   };
 
   #  home-manager.users.nico =
@@ -79,7 +91,7 @@ in {
   #{ config, pkgs, ... }:
   #programs.vscode = {
   #enable = false;
-  #package = unstable.vscodium;
+  #package = vscodium;
   #extensions = with pkgs.vscode-extensions; [
   #yzhang.markdown-all-in-one
   #rust-lang.rust-analyzer
@@ -117,7 +129,6 @@ in {
       #Optional helps save long term battery health
       START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
       STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
-
     };
   };
 
@@ -153,15 +164,19 @@ in {
   users.users.${username} = {
     isNormalUser = true;
     createHome = true;
-    extraGroups = [ "networkmanager" "wheel" "audio" "libvirtd" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "audio"
+      "libvirtd"
+    ];
   };
 
   services.greetd = {
     enable = true;
     settings = rec {
       initial_session = {
-        command =
-          "${pkgs.greetd.greetd}/bin/agreety --cmd ${pkgs.sway}/bin/sway";
+        command = "${pkgs.greetd.greetd}/bin/agreety --cmd ${pkgs.sway}/bin/sway";
         user = "${username}";
       };
       default_session = initial_session;
@@ -179,7 +194,7 @@ in {
   #grim
   #slurp
   #wl-clipboard
-  #unstable.swaynotificationcenter
+  #swaynotificationcenter
   #swaybg
   #swaylock
   #swayidle
@@ -208,10 +223,11 @@ in {
   environment.systemPackages = with pkgs; [
     shared-mime-info
     fish
-    firefox
     nextcloud-client
     git
     keepassxc
+    firefox
+    htop
     alacritty
     eza
     bat
@@ -224,7 +240,6 @@ in {
     dconf
     pavucontrol
     xdg-utils
-    htop
     brightnessctl
   ];
 

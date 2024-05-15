@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, ... }:
 
 let
   pointer = {
@@ -6,8 +6,11 @@ let
     package = pkgs.catppuccin-cursors.frappeLavender;
     size = 32;
   };
-in {
-  programs.swaylock = { enable = true; };
+in
+{
+  programs.swaylock = {
+    enable = true;
+  };
   gtk = {
     enable = true;
     theme = {
