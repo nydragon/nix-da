@@ -170,6 +170,7 @@ in
       "audio"
       "libvirtd"
     ];
+    shell = pkgs.fish;
   };
 
   services.greetd = {
@@ -185,21 +186,6 @@ in
 
   services.gnome.gnome-keyring.enable = true;
   services.flatpak.enable = true;
-
-  #programs.sway = {
-  #enable = true;
-  #wrapperFeatures.gtk = true;
-  #extraPackages = with pkgs; [
-  #waybar
-  #grim
-  #slurp
-  #wl-clipboard
-  #swaynotificationcenter
-  #swaybg
-  #swaylock
-  #swayidle
-  #];
-  #};
 
   environment.sessionVariables = {
     XDG_CACHE_HOME = "$HOME/.cache";
@@ -225,7 +211,6 @@ in
     fish
     nextcloud-client
     git
-    keepassxc
     firefox
     htop
     alacritty
@@ -246,9 +231,9 @@ in
   fonts = with pkgs; {
     packages = [
       (nerdfonts.override { fonts = [ "Noto" ]; })
-      #noto-fonts
-      #noto-fonts-extra
-      #noto-fonts-cjk-sans
+      jigmo
+      d2coding
+      last-resort
     ];
   };
 
