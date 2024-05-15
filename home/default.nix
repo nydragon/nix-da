@@ -41,6 +41,7 @@ in
 
     packages = with pkgs; [
       digikam
+      fragments
       element-desktop
       libreoffice
       loupe
@@ -49,9 +50,11 @@ in
       calibre
       vlc
       thunderbird
+      keepassxc
       gnome.nautilus
       rofi-power-menu
       lollypop
+      protonmail-bridge-ui
 
       # Proprietary
       postman
