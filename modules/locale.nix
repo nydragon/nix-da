@@ -1,6 +1,8 @@
-{ pkgs, config, lib, ... }:
-let locale = "en_GB.UTF-8";
-in {
+{ ... }:
+let
+  locale = "en_GB.UTF-8";
+in
+{
   i18n.defaultLocale = locale;
 
   i18n.extraLocaleSettings = {

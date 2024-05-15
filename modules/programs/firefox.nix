@@ -1,5 +1,6 @@
 # Reference https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
-{ pkgs, config, lib, ... }: {
+{ ... }:
+{
   programs.firefox = {
     enable = true;
     preferencesStatus = "locked";
@@ -29,13 +30,11 @@
       # Check about:support for extension/add-on ID strings.
       ExtensionSettings = {
         "uBlock0@raymondhill.net" = {
-          install_url =
-            "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "normal_install";
         };
         "firefox-translations-addon@mozilla.org" = {
-          install_url =
-            "https://addons.mozilla.org/firefox/downloads/latest/firefox-translations/latest.xpi";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/firefox-translations/latest.xpi";
           installation_mode = "normal_install";
         };
       };
@@ -66,9 +65,15 @@
       SearchBar = "unified";
       ShowHomeButton = false;
       Permissions = {
-        Location = { BlockNewRequests = true; };
-        VirtualReality = { BlockNewRequests = true; };
-        Notifications = { BlockNewRequests = true; };
+        Location = {
+          BlockNewRequests = true;
+        };
+        VirtualReality = {
+          BlockNewRequests = true;
+        };
+        Notifications = {
+          BlockNewRequests = true;
+        };
       };
       FirefoxSuggest = {
         WebSuggestions = false;
@@ -84,7 +89,6 @@
         Fingerprinting = true;
         EmailTracking = true;
       };
-
     };
   };
 }

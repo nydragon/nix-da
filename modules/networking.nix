@@ -1,18 +1,23 @@
-{ pkgs, config, lib, ... }: {
+{ ... }:
+{
   networking.firewall = {
     enable = true;
 
     # Open ports in the firewall.
     allowedTCPPorts = [ ];
     allowedUDPPorts = [ 51820 ];
-    allowedTCPPortRanges = [{
-      from = 1714;
-      to = 1764;
-    }];
-    allowedUDPPortRanges = [{
-      from = 1714;
-      to = 1764;
-    }];
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
 
     # if packets are still dropped, they will show up in dmesg
     logReversePathDrops = true;
@@ -26,5 +31,4 @@
       ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
     '';
   };
-
 }
