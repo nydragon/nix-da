@@ -141,7 +141,10 @@
         assigns = {
           "2" = [ { app_id = "firefox"; } ];
           "3" = [ ];
-          "4" = [ { class = "discord"; } ];
+          "4" = [
+            { class = "discord"; }
+            { app_id = "com.discordapp.Discord"; }
+          ];
           "5" = [ { app_id = "lollypop"; } ];
         };
         seat = {
