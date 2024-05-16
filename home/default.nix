@@ -5,9 +5,6 @@
   pkgs,
   ...
 }:
-let
-  scripts = import ./scripts { inherit pkgs; };
-in
 {
   imports = [
     ./firefox
@@ -44,46 +41,51 @@ in
     inherit username;
     inherit homeDirectory;
 
-    packages = with pkgs; [
-      digikam
-      fragments
-      element-desktop
-      libreoffice
-      loupe
-      gnome.seahorse
-      gimp
-      calibre
-      vlc
-      thunderbird
-      keepassxc
-      gnome.nautilus
-      rofi-power-menu
-      lollypop
-      protonmail-bridge-gui
-      varia
+    packages =
+      let
+        pk = with pkgs; [
+          digikam
+          fragments
+          element-desktop
+          libreoffice
+          loupe
+          gnome.seahorse
+          gimp
+          calibre
+          vlc
+          thunderbird
+          keepassxc
+          gnome.nautilus
+          rofi-power-menu
+          lollypop
+          protonmail-bridge-gui
+          varia
 
-      # Proprietary
-      postman
-      mongodb-compass
+          # Proprietary
+          postman
+          mongodb-compass
 
-      # CLI tools
-      delta
-      fzf
-      jhead
-      fdupes
-      exiftool
-      sshfs
-      zip
-      unzip
-      lazygit
-      fd
-      ripgrep
-      swaybg
+          # CLI tools
+          delta
+          fzf
+          jhead
+          fdupes
+          exiftool
+          sshfs
+          zip
+          unzip
+          lazygit
+          fd
+          ripgrep
+          swaybg
+        ];
+        scripts = with import ./scripts { inherit pkgs; }; [
+          screenshot
+          set-background
+        ];
+      in
+      scripts ++ pk;
 
-      # Scripts
-      scripts.screenshot
-      scripts.set-background
-    ];
     sessionVariables = {
       EDITOR = "nvim";
       MOZ_ENABLE_WAYLAND = 1;
