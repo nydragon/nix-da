@@ -25,6 +25,7 @@
         exiftool -if '$CreateDate' -p '$FileName' "$input" | xargs -I {} jhead -n%Y-%m-%d-%H%M%S "$input/{}"
         end
       '';
+      fish_prompt = builtins.readFile ./fish_prompt.fish;
     };
   };
 }
