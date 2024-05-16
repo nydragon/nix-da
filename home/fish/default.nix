@@ -5,7 +5,9 @@
     shellAbbrs = {
       clip = "wl-copy";
       dp = "env --chdir ~/.dotfiles/ dotter deploy -v";
+      l = "eza -laa";
       ls = "eza -la";
+      ll = "eza -l";
       cat = "bat";
       sd = ''cd "$(dirname "$HOME/$(env --chdir ~ fzf)")"'';
       mkdir = "mkdir --parent";
