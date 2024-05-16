@@ -1,22 +1,23 @@
 { pkgs, ... }:
 {
-  programs.neovim =
-    let
-      customR = pkgs.rWrapper.override {
-        packages = with pkgs.rPackages; [
-          styler
-          languageserver
-        ];
-      };
-    in
-    {
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      enable = true;
-      withPython3 = false;
-      withRuby = false;
-      extraPackages = with pkgs; [
+  programs.neovim = {
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    enable = true;
+    withPython3 = false;
+    withRuby = false;
+    extraPackages =
+      let
+        customR = pkgs.rWrapper.override {
+          packages = with pkgs.rPackages; [
+            styler
+            languageserver
+          ];
+        };
+      in
+      with pkgs;
+      [
         # Language Servers
         rust-analyzer
         nixd
@@ -46,5 +47,5 @@
         # R
         customR
       ];
-    };
+  };
 }
