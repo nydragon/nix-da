@@ -34,6 +34,11 @@ in
   qt.enable = true;
   qt.platformTheme.name = "gtk";
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   home = {
     inherit stateVersion;
     inherit username;
@@ -55,6 +60,7 @@ in
       rofi-power-menu
       lollypop
       protonmail-bridge-gui
+      varia
 
       # Proprietary
       postman
