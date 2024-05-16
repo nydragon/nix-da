@@ -13,6 +13,7 @@
     ./neovim
     ./rofi
     ./thunderbird
+    ./git
   ];
 
   xdg.configFile."gtk-4.0/gtk.css".source = "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Frappe-Standard-Blue-Dark/gtk-4.0/gtk.css";
