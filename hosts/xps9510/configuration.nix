@@ -218,7 +218,6 @@ in
     bat
     kdeconnect
     dotter
-    sassc
     glib
     pamixer
     wireguard-tools
@@ -231,8 +230,8 @@ in
   fonts = with pkgs; {
     packages = [
       (nerdfonts.override { fonts = [ "Noto" ]; })
-      jigmo
       d2coding
+      jigmo
       last-resort
     ];
   };
