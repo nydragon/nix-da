@@ -1,34 +1,43 @@
-{ pkgs, ... }:
-
-let
-  pointer = {
-    name = "Catppuccin-Frappe-Lavender-Cursors";
-    package = pkgs.catppuccin-cursors.frappeLavender;
-    size = 32;
-  };
-in
+{ ... }:
 {
   programs.swaylock = {
     enable = true;
-  };
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Catppuccin-Frappe-Compact-Lavender-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "lavender" ];
-        size = "compact";
-        variant = "frappe";
-      };
-    };
-    cursorTheme = pointer;
-    iconTheme = {
-      name = "Papirus-Dark";
-      #   package = pkgs.papirus-icon-theme;
-      package = pkgs.catppuccin-papirus-folders.override {
-        accent = "lavender";
-        flavor = "frappe";
-      };
+    settings = {
+      ignore-empty-password = true;
+      indicator-idle-visible = true;
+      indicator-radius = 150;
+      indicator-thickness = 30;
+
+      # Theme
+      color = "303446";
+      bs-hl-color = "f2d5cf";
+      caps-lock-bs-hl-color = "f2d5cf";
+      caps-lock-key-hl-color = "a6d189";
+      inside-color = "00000000";
+      inside-clear-color = "00000000";
+      inside-caps-lock-color = "00000000";
+      inside-ver-color = "00000000";
+      inside-wrong-color = "00000000";
+      key-hl-color = "a6d189";
+      layout-bg-color = "00000000";
+      layout-border-color = "00000000";
+      layout-text-color = "c6d0f5";
+      line-color = "00000000";
+      line-clear-color = "00000000";
+      line-caps-lock-color = "00000000";
+      line-ver-color = "00000000";
+      line-wrong-color = "00000000";
+      ring-color = "babbf1";
+      ring-clear-color = "f2d5cf";
+      ring-caps-lock-color = "ef9f76";
+      ring-ver-color = "8caaee";
+      ring-wrong-color = "ea999c";
+      separator-color = "00000000";
+      text-color = "c6d0f5";
+      text-clear-color = "f2d5cf";
+      text-caps-lock-color = "ef9f76";
+      text-ver-color = "8caaee";
+      text-wrong-color = "ea999c";
     };
   };
 }

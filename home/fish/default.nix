@@ -11,6 +11,7 @@
       cat = "bat";
       sd = ''cd "$(dirname "$HOME/$(env --chdir ~ fzf)")"'';
       mkdir = "mkdir --parent";
+      cp = "cp -i";
     };
     functions = {
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
