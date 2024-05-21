@@ -10,7 +10,8 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager }:
+  outputs =
+    inputs@{ self, nixpkgs, ... }:
     let
       inherit (self) outputs;
 
@@ -22,13 +23,23 @@
       };
 
       lib = nixpkgs.lib;
-    in {
+    in
+    {
       nixosConfigurations = {
         xps9510 = lib.nixosSystem {
           inherit system;
           modules = [ ./hosts/xps9510/configuration.nix ];
-          specialArgs = { inherit inputs outputs system pkgs; };
+          specialArgs = {
+            inherit
+              inputs
+              outputs
+              system
+              pkgs
+              ;
+          };
         };
       };
+
+      templates = import ./templates { self = self.templates; };
     };
 }
