@@ -74,7 +74,7 @@
             "${mod}+Shift+space" = "floating toggle";
             "${mod}+Return" = "exec ${term}";
             "${mod}+e" = "exec ${filemanager}";
-            "${mod}+x" = "layout toggle stacking split";
+            "${mod}+x" = "layout toggle tabbed split";
             "${mod}+Control+Left" = "workspace prev";
             "${mod}+Control+Right" = "workspace next";
             "${mod}+n" = "exec ${pkgs.swaynotificationcenter}/bin/swaync-client -t";
