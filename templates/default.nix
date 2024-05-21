@@ -1,5 +1,4 @@
-{ self }:
-{
+rec {
   basic = {
     path = ./basic;
     description = "A basic template";
@@ -25,5 +24,5 @@
     '';
   };
 
-  defaultTemplate = self.basic;
+  defaultTemplate = basic;
 }

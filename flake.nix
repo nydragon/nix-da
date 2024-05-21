@@ -40,6 +40,6 @@
         };
       };
 
-      templates = import ./templates { self = self.templates; };
+      templates = import ./templates;
     };
 }
