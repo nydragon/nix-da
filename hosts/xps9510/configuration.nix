@@ -86,18 +86,6 @@ in
       ;
   };
 
-  #  home-manager.users.nico =
-  ## vim:fileencoding=utf-8:foldmethod=marker
-  #{ config, pkgs, ... }:
-  #programs.vscode = {
-  #enable = false;
-  #package = vscodium;
-  #extensions = with pkgs.vscode-extensions; [
-  #yzhang.markdown-all-in-one
-  #rust-lang.rust-analyzer
-  #];
-  #};
-
   programs.dconf.enable = true;
 
   #security.polkit.enable = true;
