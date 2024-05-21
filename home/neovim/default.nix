@@ -21,7 +21,6 @@
         # Language Servers
         rust-analyzer
         nixd
-        clang
         nodePackages_latest.pyright
         nodePackages_latest.bash-language-server
         lua-language-server
@@ -31,6 +30,7 @@
         # Formatter
         python311Packages.black # Python formatter
         #rPackages.styler # R formatter
+        clang-tools
         nodePackages_latest.prettier # JSON, JS, TS formatter
         yamlfmt # YAML formatter
         taplo # TOML formatter
