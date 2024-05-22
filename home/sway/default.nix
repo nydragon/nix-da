@@ -84,10 +84,10 @@
             "--locked XF86AudioLowerVolume" = "exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -d 5";
             "--locked XF86AudioMicMute" = "exec --no-startup-id ${pkgs.pamixer}/bin/pamixer --default-source -m";
             "--locked XF86AudioMute" = "exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -t";
-            "--locked XF86AudioPlay" = "exec playerctl play-pause";
-            "--locked XF86AudioPause" = "exec playerctl play-pause";
-            "--locked XF86AudioNext" = "exec playerctl next";
-            "--locked XF86AudioPrev" = "exec playerctl previous";
+            "--locked XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+            "--locked XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+            "--locked XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+            "--locked XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
             "Print" = "exec ${screenshot}/bin/screenshot";
             "${mod}+u" = "exec ${screenshot}/bin/screenshot";
             #: {{{

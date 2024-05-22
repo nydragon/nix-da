@@ -207,7 +207,6 @@ in
     kdeconnect
     dotter
     glib
-    pamixer
     wireguard-tools
     dconf
     pavucontrol
