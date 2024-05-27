@@ -40,6 +40,15 @@
         };
       };
 
+      devShell."${system}" = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          pre-commit
+          nixfmt-rfc-style
+        ];
+        shellHook = ''
+          ${pkgs.pre-commit}/bin/pre-commit install -f
+        '';
+      };
       templates = import ./templates;
     };
 }
