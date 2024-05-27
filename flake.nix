@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,7 +11,12 @@
   };
 
   outputs =
-    inputs@{ self, nixpkgs, ... }:
+    inputs@{
+      self,
+      nixpkgs,
+      nixos-hardware,
+      ...
+    }:
     let
       inherit (self) outputs;
 
@@ -28,7 +33,10 @@
       nixosConfigurations = {
         marr = lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/marr/configuration.nix ];
+          modules = [
+            ./hosts/marr/configuration.nix
+            nixos-hardware.nixosModules.dell-xps-15-9510-nvidia
+          ];
           specialArgs = {
             inherit
               inputs
