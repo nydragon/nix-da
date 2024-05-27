@@ -17,7 +17,6 @@
           "drun"
           "run"
           "calc"
-          "vm:${conf}/scripts/libvirt-controller.py"
           "obsidian:rofi-obsidian"
         ];
         matching = "fuzzy";
