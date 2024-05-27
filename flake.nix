@@ -44,6 +44,7 @@
         buildInputs = with pkgs; [
           pre-commit
           nixfmt-rfc-style
+          nodePackages.prettier
         ];
         shellHook = ''
           ${pkgs.pre-commit}/bin/pre-commit install -f

@@ -12,9 +12,17 @@ repos:
   - repo: local
     hooks:
       - id: nixpkgs-fmt
-        name: Check formatting
+        name: Check nix formatting
         entry: nixfmt
         language: system
         files: .*\.nix$
+        args: [-c]
+        stages: [commit]
+
+      - id: prettier
+        name: Check css, scss, js and ts formatting
+        entry: prettier
+        language: system
+        files: .*\.(css|scss|js|ts)$
         args: [-c]
         stages: [commit]

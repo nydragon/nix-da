@@ -68,19 +68,19 @@
   font-weight: bold;
 }
 
-.widget-dnd>switch {
+.widget-dnd > switch {
   border-radius: 5px;
   background: #665c54;
   border: 3px solid black;
 }
 
-.widget-dnd>switch:checked {
+.widget-dnd > switch:checked {
   background: @neutral_red;
 }
 
-.widget-dnd>switch slider {
+.widget-dnd > switch slider {
   background: black;
-  border-radius: 3px
+  border-radius: 3px;
 }
 
 .widget-mpris-player {
@@ -91,7 +91,7 @@
   box-shadow: none;
 }
 
-.widget-mpris>.horizontal>.image-button {
+.widget-mpris > .horizontal > .image-button {
   margin-top: 60px;
   margin-bottom: 60px;
   border-radius: 15px;
@@ -103,7 +103,7 @@
   box-shadow: 0px 5px black;
 }
 
-.widget-mpris>.horizontal>.image-button:nth-child(3) {
+.widget-mpris > .horizontal > .image-button:nth-child(3) {
   border-radius: 15px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -118,7 +118,7 @@
 }
 
 /* move buttons grid 20px up if there's the mpris player above it */
-.widget-mpris+.widget-buttons-grid {
+.widget-mpris + .widget-buttons-grid {
   margin-top: -20px;
 }
 
@@ -187,7 +187,6 @@
   border-top-right-radius: 6px;
   background-color: @bright_yellow;
 }
-
 
 .control-center .notification-action:hover {
   background-color: @neutral_orange;
