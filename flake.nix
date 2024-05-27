@@ -45,6 +45,7 @@
           pre-commit
           nixfmt-rfc-style
           nodePackages.prettier
+          typos
         ];
         shellHook = ''
           ${pkgs.pre-commit}/bin/pre-commit install -f

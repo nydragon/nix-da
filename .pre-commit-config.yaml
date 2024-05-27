@@ -20,9 +20,16 @@ repos:
         stages: [commit]
 
       - id: prettier
-        name: Check css, scss, js and ts formatting
+        name: Check css, scss, js, ts and yaml formatting
         entry: prettier
         language: system
-        files: .*\.(css|scss|js|ts)$
+        files: .*\.(css|scss|js|ts|yaml)$
         args: [-c]
+        stages: [commit]
+
+      - id: typos
+        name: Check for typos
+        entry: typos
+        language: system
+        files: .*
         stages: [commit]
