@@ -26,9 +26,9 @@
     in
     {
       nixosConfigurations = {
-        xps9510 = lib.nixosSystem {
+        marr = lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/xps9510/configuration.nix ];
+          modules = [ ./hosts/marr/configuration.nix ];
           specialArgs = {
             inherit
               inputs

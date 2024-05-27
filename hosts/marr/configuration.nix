@@ -9,7 +9,7 @@
 let
   stateVersion = "23.11";
   username = "nico";
-  hostname = "xps9510";
+  hostname = "marr";
   homeDirectory = "/home/${username}";
 in
 {
