@@ -131,6 +131,11 @@
             '';
           }
           {
+            command = ''
+              [ -z "$(pidof protonmail-bridge)" ] && ${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge
+            '';
+          }
+          {
             command = "${set-background}/bin/set-background -f ${wallpaper}";
             always = true;
           }

@@ -205,7 +205,6 @@ in
     eza
     bat
     kdeconnect
-    dotter
     glib
     wireguard-tools
     dconf

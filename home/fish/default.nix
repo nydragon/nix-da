@@ -1,10 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.fish = {
     enable = true;
     shellAbbrs = {
       clip = "wl-copy";
-      dp = "env --chdir ~/.dotfiles/ dotter deploy -v";
+      dp = "env --chdir ~/.dotfiles/ ${pkgs.dotter}/bin/dotter deploy -v";
       l = "eza -laa";
       ls = "eza -la";
       ll = "eza -l";
