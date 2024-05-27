@@ -11,7 +11,7 @@
         engines =
           let
             nixicon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            iconUpdateInteval = 24 * 60 * 60 * 1000; # every day
+            iconUpdateInterval = 24 * 60 * 60 * 1000; # every day
           in
           {
             "NixOS Packages" = {
@@ -34,13 +34,13 @@
                 { template = "https://wiki.archlinux.org/index.php?title=Special:Search&search={searchTerms}"; }
               ];
               iconUpdateURL = "https://nixos.wiki/favicon.ico";
-              updateInterval = iconUpdateInteval;
+              updateInterval = iconUpdateInterval;
               definedAliases = [ "@archwiki" ];
             };
             "DuckDuckGo" = {
               urls = [ { template = "https://duckduckgo.com/?q={searchTerms}"; } ];
               iconUpdateURL = "https://duckduckgo.com/favicon.ico";
-              updateInterval = iconUpdateInteval;
+              updateInterval = iconUpdateInterval;
               definedAliases = [
                 "@duckduckgo"
                 "@ddg"
@@ -49,7 +49,7 @@
             "MyNixOS" = {
               urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
               iconUpdateURL = "https://mynixos.com/favicon.ico";
-              updateInterval = iconUpdateInteval;
+              updateInterval = iconUpdateInterval;
               definedAliases = [
                 "@hm"
                 "@mynixos"
@@ -58,7 +58,7 @@
             "stackoverflow" = {
               urls = [ { template = "https://stackoverflow.com/search?q={searchTerms}"; } ];
               iconUpdateURL = "https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico";
-              updateInterval = iconUpdateInteval;
+              updateInterval = iconUpdateInterval;
               definedAliases = [ "@stackoverflow" ];
             };
           };
