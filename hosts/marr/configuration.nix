@@ -124,6 +124,9 @@ in
     enable = true;
     criticalPowerAction = "Hibernate";
   };
+
+  services.fwupd.enable = true;
+
   services.dbus.enable = true;
   xdg.portal = {
     enable = true;
