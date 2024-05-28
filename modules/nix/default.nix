@@ -5,10 +5,16 @@
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 20d";
+      # Catch up on missed runs due to being powered off
+      persistent = true;
     };
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    settings = {
+      # Deduplicate identical files in the store regularly
+      optimise.automatic = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
   };
 }
