@@ -112,6 +112,7 @@
         scripts = with import ./scripts { inherit pkgs; }; [
           screenshot
           set-background
+          nixedit
         ];
       in
       scripts ++ pk;

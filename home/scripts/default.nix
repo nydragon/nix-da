@@ -26,4 +26,6 @@
       }
     )
   );
+
+  nixedit = pkgs.writers.writeFishBin "nixedit" "env --chdir ~/.nixconf $EDITOR .";
 }
