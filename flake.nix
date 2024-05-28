@@ -11,12 +11,7 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      nixos-hardware,
-      ...
-    }:
+    inputs@{ self, nixpkgs, ... }:
     let
       inherit (self) outputs;
 
@@ -35,7 +30,7 @@
           inherit system;
           modules = [
             ./hosts/marr/configuration.nix
-            nixos-hardware.nixosModules.dell-xps-15-9510-nvidia
+            #inputs.nixos-hardware.nixosModules.dell-xps-15-9510-nvidia
           ];
           specialArgs = {
             inherit
