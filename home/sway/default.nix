@@ -33,6 +33,8 @@
         };
       };
       wallpaper = "${homeDirectory}/Pictures/backgrounds/catppucchin";
+
+      mkRegexList = list: "^(${(lib.strings.concatStringsSep "|" list)})$";
     in
     {
       enable = true;
@@ -147,7 +149,7 @@
         #: }}}
         assigns = {
           "2" = [ { app_id = "firefox"; } ];
-          "3" = [ ];
+          "3" = [ { app_id = "obsidian"; } ];
           "4" = [
             { class = "discord"; }
             { app_id = "com.discordapp.Discord"; }
@@ -172,20 +174,21 @@
             }
             {
               command = "floating enable";
-              criteria.app_id = "^(${
-                (lib.strings.concatStringsSep "|" [
-                  "org.keepassxc.KeePassXC"
-                  "xdg-desktop-portal-gtk"
-                  "org.kde.polkit-kde-authentication-agent-1"
-                  "com.nextcloud.desktopclient.nextcloud"
-                ])
-              })$";
+              criteria.app_id = mkRegexList [
+                "org.keepassxc.KeePassXC"
+                "xdg-desktop-portal-gtk"
+                "org.kde.polkit-kde-authentication-agent-1"
+                "com.nextcloud.desktopclient.nextcloud"
+                "org.kde.kdeconnect.daemon"
+              ];
             }
             {
+              # Make it clear which window runs using xwayland
               command = ''title_format "[XWayland] %title"'';
               criteria.shell = "xwayland";
             }
             {
+              # Nextcloud closes when its not focused, thus moving the mouse over any other window will close it
               command = "move position mouse";
               criteria.app_id = "com.nextcloud.desktopclient.nextcloud";
             }
