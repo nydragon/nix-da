@@ -43,7 +43,7 @@
         };
       };
 
-      devShell."${system}" = pkgs.mkShell {
+      devShells."${system}".default = pkgs.mkShell {
         buildInputs = with pkgs; [
           pre-commit
           nixfmt-rfc-style
