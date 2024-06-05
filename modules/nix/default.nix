@@ -8,9 +8,11 @@
       # Catch up on missed runs due to being powered off
       persistent = true;
     };
+    #Deduplicate identical files in the store regularly
+    optimise = {
+      automatic = true;
+    };
     settings = {
-      # Deduplicate identical files in the store regularly
-      optimise.automatic = true;
       experimental-features = [
         "nix-command"
         "flakes"
