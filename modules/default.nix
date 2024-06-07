@@ -5,6 +5,7 @@
     ./networking.nix
     ./nix
     ./programs/firefox.nix
+    ./programs/thunderbird.nix
     ./programs/sway.nix
   ];
 }
