@@ -4,7 +4,8 @@
     let
       conf = "${config.home.homeDirectory}/.config/rofi";
     in
-    {
+    rec {
+      package = pkgs.rofi-wayland.override { inherit plugins; };
       enable = true;
       plugins = [ pkgs.rofi-calc ];
       theme = "${conf}/themes/rounded-gray-dark.rasi";
@@ -16,8 +17,11 @@
           "ssh"
           "drun"
           "run"
-          "calc"
-          "obsidian:rofi-obsidian"
+          # WARNING: ABI version mismatch
+          # "calc"
+          # TODO: Update to use nixpkgs version of cliphist
+          "clipboard:cliphist-rofi-img"
+          "obsidian:${pkgs.rofi-obsidian}/bin/rofi-obsidian"
         ];
         matching = "fuzzy";
         sort = true;
@@ -29,9 +33,6 @@
         combi-modes = [
           "window"
           "drun"
-          "filebrowser"
-          "ssh"
-          "calc"
           "obsidian"
         ];
       };

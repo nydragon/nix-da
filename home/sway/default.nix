@@ -63,7 +63,8 @@
             mod = config.wayland.windowManager.sway.config.modifier;
           in
           lib.mkOptionDefault {
-            "${mod}+p" = "exec ${pkgs.swaylock}/bin/swaylock";
+            # TODO: Update to use nixpkgs version of cliphist
+            "${mod}+p" = "exec cliphist wipe & ${pkgs.swaylock}/bin/swaylock";
             "${mod}+Shift+p" = "exec ${pkgs.rofi}/bin/rofi -show p -modi p:rofi-power-menu";
             # Reload the config file
             "${mod}+Shift+c" = "reload";
@@ -73,6 +74,7 @@
             "${mod}+f" = "fullscreen";
             # Start launcher
             "${mod}+d" = "exec rofi -config ${homeDirectory}/.config/rofi/config.rasi -show combi -automatic-save-to-history | xargs swaymsg exec --";
+            "${mod}+s" = "exec rofi -show clipboard -show-icons";
             # Toggle the current focus between tiling and floating mode
             "${mod}+Shift+space" = "floating toggle";
             "${mod}+Return" = "exec ${term}";
@@ -93,7 +95,7 @@
             "--locked XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
             "Print" = "exec ${screenshot}/bin/screenshot";
             "${mod}+u" = "exec ${screenshot}/bin/screenshot";
-            #: {{{
+            #: Workspace movement {{{
             "--input-device=${inputs.kb.builtin} ${mod}+ampersand" = "workspace number 1";
             "--input-device=${inputs.kb.builtin} ${mod}+eacute" = "workspace number 2";
             "--input-device=${inputs.kb.builtin} ${mod}+quotedbl" = "workspace number 3";
@@ -120,23 +122,10 @@
         #: Startup {{{
         startup = [
           { command = "${pkgs.swayidle}/bin/swayidle -C ${homeDirectory}/.config/swayidle/config"; }
-          {
-
-            command = "${pkgs.swaynotificationcenter}/bin/swaync";
-          }
-          {
-            command = ''[ -z "$(pidof nextcloud)" ] && ${pkgs.nextcloud-client}/bin/nextcloud --background'';
-          }
-          {
-            command = ''
-              [ -z "$(pidof kdeconnect-indicator)" ] && ${pkgs.kdeconnect}/bin/kdeconnect-indicator
-            '';
-          }
-          {
-            command = ''
-              [ -z "$(pidof protonmail-bridge)" ] && ${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge
-            '';
-          }
+          { command = "${pkgs.swaynotificationcenter}/bin/swaync"; }
+          { command = "${pkgs.nextcloud-client}/bin/nextcloud --background"; }
+          { command = "${pkgs.kdeconnect}/bin/kdeconnect-indicator"; }
+          { command = "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge"; }
           {
             command = "${set-background}/bin/set-background -f ${wallpaper}";
             always = true;
@@ -144,6 +133,10 @@
           {
             command = "${pkgs.swaynotificationcenter}/bin/swaync-client --reload-config --reload-css";
             always = true;
+          }
+          {
+            # Copy all copied values into the cliphist store
+            command = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store -max-items 10";
           }
         ];
         #: }}}
