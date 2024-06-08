@@ -81,7 +81,6 @@
           loupe
           gnome.seahorse
           gimp
-          calibre
           vlc
           thunderbird
           keepassxc
@@ -115,7 +114,15 @@
           nixedit
         ];
       in
-      scripts ++ pk;
+      scripts
+      ++ pk
+      ++ [
+        (pkgs.calibre.overrideAttrs (old: {
+          postInstall = ''
+            wrapProgram $out/bin/calibre --prefix QT_QPA_PLATFORM = "xcb"
+          '';
+        }))
+      ];
 
     sessionVariables = {
       EDITOR = "nvim";
