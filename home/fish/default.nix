@@ -23,7 +23,12 @@
         mv-bad-creation-date = ''exiftool -if 'not $CreateDate' -p '$FileName' "$PWD/$argv[1]" | xargs -I {} mv -i "$PWD/$argv[1]/{}" "$argv[2]"'';
         rename-images = rf ./rename_images.fish;
         fish_prompt = rf ./fish_prompt.fish;
-        rebuild = "env --chdir $HOME/.nixconf sudo nixos-rebuild switch --flake .#$(hostname)";
+        rebuild = ''
+          env --chdir $HOME/.nixconf sudo nixos-rebuild switch --flake .#$(hostname) \
+          && ${pkgs.libnotify}/bin/notify-send nixos-rebuild "Rebuild complete" \
+              -a nixos-rebuild \
+              -i ${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg
+        '';
       };
   };
 }
