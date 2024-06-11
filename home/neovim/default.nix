@@ -21,7 +21,7 @@
         # Language Servers
         rust-analyzer
         nixd
-        nodePackages_latest.pyright
+        pyright
         nodePackages_latest.bash-language-server
         lua-language-server
         zls
