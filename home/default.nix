@@ -119,7 +119,10 @@
       ++ [
         (pkgs.calibre.overrideAttrs (old: {
           postInstall = ''
-            wrapProgram $out/bin/calibre --prefix QT_QPA_PLATFORM = "xcb"
+            wrapProgram $out/bin/calibre \
+                --set QT_QPA_PLATFORM xcb \
+                --set-default ACSM_LIBCRYPTO ${pkgs.openssl.out}/lib/libcrypto.so \
+                --set-default ACSM_LIBSSL ${pkgs.openssl.out}/lib/libssl.so
           '';
         }))
       ];
