@@ -7,5 +7,6 @@
     ./programs/firefox.nix
     ./programs/thunderbird.nix
     ./programs/sway.nix
+    ./programs/lazygit.nix
   ];
 }
