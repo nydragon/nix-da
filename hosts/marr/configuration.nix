@@ -72,9 +72,13 @@ in
       };
   };
 
-  programs.dconf.enable = true;
-  programs.steam.enable = true;
-  programs.fish.enable = true;
+  programs = {
+    dconf.enable = true;
+    steam.enable = true;
+    fish.enable = true;
+    firefox.enable = true;
+    thunderbird.enable = true;
+  };
 
   home-manager.users.${username} = import ../../home {
     inherit
@@ -84,6 +88,7 @@ in
       inputs
       stateVersion
       username
+      lib
       homeDirectory
       ;
   };

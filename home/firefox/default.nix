@@ -33,7 +33,7 @@
               urls = [
                 { template = "https://wiki.archlinux.org/index.php?title=Special:Search&search={searchTerms}"; }
               ];
-              iconUpdateURL = "https://nixos.wiki/favicon.ico";
+              iconUpdateURL = "https://wiki.archlinux.org/favicon.ico";
               updateInterval = iconUpdateInterval;
               definedAliases = [ "@archwiki" ];
             };
@@ -60,6 +60,15 @@
               iconUpdateURL = "https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico";
               updateInterval = iconUpdateInterval;
               definedAliases = [ "@stackoverflow" ];
+            };
+
+            Noogle = {
+              urls = [ { template = "https://noogle.dev/q?term={searchTerms}"; } ];
+              icon = nixicon;
+              definedAliases = [
+                "@noogle"
+                "@ngl"
+              ];
             };
           };
       };

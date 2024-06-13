@@ -1,7 +1,6 @@
-{ ... }:
+{ lib, config, ... }:
 {
-  programs.thunderbird = {
-    enable = true;
+  programs.thunderbird = lib.mkIf config.programs.thunderbird.enable {
     preferencesStatus = "locked";
     preferences = {
       "mail.biff.play_sound" = false;
