@@ -5,7 +5,7 @@
   pkgs,
   ...
 }:
-{
+rec {
   imports = [
     ./firefox
     ./fish
@@ -16,8 +16,6 @@
     ./git
     ./vscodium
   ];
-
-  xdg.configFile."gtk-4.0/gtk.css".source = "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Frappe-Standard-Blue-Dark/gtk-4.0/gtk.css";
 
   dconf = {
     enable = true;
@@ -30,37 +28,29 @@
 
   services.blueman-applet.enable = true;
 
-  qt.enable = true;
   qt.platformTheme.name = "gtk";
 
-  gtk =
-    let
-      pointer = {
-        name = "Catppuccin-Frappe-Lavender-Cursors";
-        package = pkgs.catppuccin-cursors.frappeLavender;
-        size = 32;
-      };
-    in
-    {
-      enable = true;
-      theme = {
-        name = "Catppuccin-Frappe-Compact-Lavender-Dark";
-        package = pkgs.catppuccin-gtk.override {
-          accents = [ "lavender" ];
-          size = "compact";
-          variant = "frappe";
-        };
-      };
-      cursorTheme = pointer;
-      iconTheme = {
-        name = "Papirus-Dark";
-        #   package = pkgs.papirus-icon-theme;
-        package = pkgs.catppuccin-papirus-folders.override {
-          accent = "lavender";
-          flavor = "frappe";
-        };
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Catppuccin-Frappe-Compact-Lavender-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "lavender" ];
+        size = "compact";
+        variant = "frappe";
       };
     };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.catppuccin-papirus-folders.override {
+        accent = "lavender";
+        flavor = "frappe";
+      };
+    };
+    cursorTheme = with home.pointerCursor; {
+      inherit name package size;
+    };
+  };
 
   programs.direnv = {
     enable = true;
@@ -71,6 +61,14 @@
     inherit stateVersion;
     inherit username;
     inherit homeDirectory;
+
+    pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      name = "Catppuccin-Frappe-Lavender-Cursors";
+      package = pkgs.catppuccin-cursors.frappeLavender;
+      size = 32;
+    };
 
     packages =
       let

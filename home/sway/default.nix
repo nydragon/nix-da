@@ -151,7 +151,7 @@
         };
         seat = {
           "*" = {
-            xcursor_theme = "Catppuccin-Frappe-Lavender-Cursors 32";
+            xcursor_theme = "${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}";
             keyboard_grouping = "none";
           };
         };
