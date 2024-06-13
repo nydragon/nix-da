@@ -2,6 +2,7 @@
 {
   config,
   pkgs,
+  lib,
   inputs,
   system,
   ...
@@ -26,9 +27,6 @@ in
 
   boot.initrd.luks.devices."luks-7adaa102-d438-4e9e-9972-4a3c91b887b3".device = "/dev/disk/by-uuid/7adaa102-d438-4e9e-9972-4a3c91b887b3";
   networking.hostName = hostname;
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -74,6 +72,10 @@ in
       };
   };
 
+  programs.dconf.enable = true;
+  programs.steam.enable = true;
+  programs.fish.enable = true;
+
   home-manager.users.${username} = import ../../home {
     inherit
       config
@@ -86,9 +88,7 @@ in
       ;
   };
 
-  programs.dconf.enable = true;
-
-  #security.polkit.enable = true;
+  #: Virtualisation {{{
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
   virtualisation.docker.rootless = {
@@ -97,7 +97,9 @@ in
   };
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
+  #: }}}
 
+  #: Power Consumption {{{
   services.thermald.enable = true;
 
   services.tlp = {
@@ -124,10 +126,12 @@ in
     enable = true;
     criticalPowerAction = "Hibernate";
   };
+  #:}}}
 
   services.fwupd.enable = true;
 
   services.dbus.enable = true;
+
   xdg.portal = {
     enable = true;
     wlr = {
@@ -148,20 +152,20 @@ in
 
   # Configure console keymap
   console.keyMap = "fr";
-  programs.fish.enable = true;
 
-  users.defaultUserShell = pkgs.fish;
-
-  users.users.${username} = {
-    isNormalUser = true;
-    createHome = true;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "audio"
-      "libvirtd"
-    ];
-    shell = pkgs.fish;
+  users = {
+    defaultUserShell = pkgs.fish;
+    users.${username} = {
+      isNormalUser = true;
+      createHome = true;
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "audio"
+        "libvirtd"
+      ];
+      shell = pkgs.fish;
+    };
   };
 
   services.greetd = {

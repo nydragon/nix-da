@@ -3,7 +3,10 @@
   networking = {
     wireless.iwd.enable = true;
 
-    networkmanager.wifi.backend = "iwd";
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
 
     firewall =
       let

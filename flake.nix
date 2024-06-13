@@ -37,6 +37,7 @@
               inputs
               outputs
               system
+              lib
               pkgs
               ;
           };
