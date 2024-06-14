@@ -88,10 +88,12 @@ rec {
           lollypop
           protonmail-bridge-gui
           varia
+          signal-desktop
 
           # Proprietary
           postman
           mongodb-compass
+          obsidian
 
           # CLI tools
           delta
@@ -129,6 +131,7 @@ rec {
     sessionVariables = {
       EDITOR = "nvim";
       MOZ_ENABLE_WAYLAND = 1;
+      ELECTRON_OZONE_PLATFORM_HINT = "auto";
     };
   };
 }
