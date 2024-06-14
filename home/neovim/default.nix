@@ -7,45 +7,43 @@
     enable = true;
     withPython3 = false;
     withRuby = false;
-    extraPackages =
-      let
-        customR = pkgs.rWrapper.override {
-          packages = with pkgs.rPackages; [
-            styler
-            languageserver
-          ];
-        };
-      in
-      with pkgs;
-      [
-        # Language Servers
-        rust-analyzer
-        nixd
-        pyright
-        nodePackages_latest.bash-language-server
-        lua-language-server
-        zls
-        #rPackages.languageserver
+    extraPackages = with pkgs; [
+      # Language Servers
+      rust-analyzer
+      nixd
+      pyright
+      nodePackages_latest.bash-language-server
+      lua-language-server
+      zls
+      #rPackages.languageserver
 
-        # Formatter
-        python311Packages.black # Python formatter
-        #rPackages.styler # R formatter
-        clang-tools
-        nodePackages_latest.prettier # JSON, JS, TS formatter
-        yamlfmt # YAML formatter
-        taplo # TOML formatter
-        rustfmt # Rust formatter
-        shfmt # Shell, Bash etc.
-        nixfmt-rfc-style
-        stylua
+      # Formatter
+      python311Packages.black # Python formatter
+      #rPackages.styler # R formatter
+      clang-tools
+      nodePackages_latest.prettier # JSON, JS, TS formatter
+      yamlfmt # YAML formatter
+      taplo # TOML formatter
+      rustfmt # Rust formatter
+      shfmt # Shell, Bash etc.
+      nixfmt-rfc-style
+      stylua
 
-        # Misc
-        ripgrep
-        rustc
-        cargo
+      # Misc
+      ripgrep
+      rustc
+      cargo
+      nodejs_22
+      clang
+      tree-sitter
 
-        # R
-        customR
-      ];
+      # R
+      (rWrapper.override {
+        packages = with rPackages; [
+          styler
+          languageserver
+        ];
+      })
+    ];
   };
 }
