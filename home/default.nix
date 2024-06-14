@@ -65,7 +65,7 @@ rec {
     pointerCursor = {
       gtk.enable = true;
       x11.enable = true;
-      name = "Catppuccin-Frappe-Lavender-Cursors";
+      name = "catppuccin-frappe-lavender-cursors";
       package = pkgs.catppuccin-cursors.frappeLavender;
       size = 32;
     };
