@@ -65,7 +65,7 @@
           lib.mkOptionDefault {
             # TODO: Update to use nixpkgs version of cliphist
             "${mod}+p" = "exec cliphist wipe & ${pkgs.swaylock}/bin/swaylock";
-            "${mod}+Shift+p" = "exec ${pkgs.rofi}/bin/rofi -show p -modi p:rofi-power-menu";
+            "${mod}+Shift+p" = "exec rofi -show p -modi p:rofi-power-menu";
             # Reload the config file
             "${mod}+Shift+c" = "reload";
             # Kill the focused window
@@ -125,7 +125,7 @@
           { command = "${pkgs.swaynotificationcenter}/bin/swaync"; }
           { command = "${pkgs.nextcloud-client}/bin/nextcloud --background"; }
           { command = "${pkgs.kdeconnect}/bin/kdeconnect-indicator"; }
-          { command = "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge --no-window"; }
+          { command = "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window"; }
           {
             command = "${set-background}/bin/set-background -f ${wallpaper}";
             always = true;
