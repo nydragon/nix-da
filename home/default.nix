@@ -89,6 +89,7 @@ rec {
           protonmail-bridge-gui
           varia
           signal-desktop
+          calibre
 
           # Proprietary
           postman
@@ -115,18 +116,7 @@ rec {
           nixedit
         ];
       in
-      scripts
-      ++ pk
-      ++ [
-        (pkgs.calibre.overrideAttrs (old: {
-          postInstall = ''
-            wrapProgram $out/bin/calibre \
-                --set QT_QPA_PLATFORM xcb \
-                --set-default ACSM_LIBCRYPTO ${pkgs.openssl.out}/lib/libcrypto.so \
-                --set-default ACSM_LIBSSL ${pkgs.openssl.out}/lib/libssl.so
-          '';
-        }))
-      ];
+      scripts ++ pk;
 
     sessionVariables = {
       EDITOR = "nvim";

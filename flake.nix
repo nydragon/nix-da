@@ -16,10 +16,12 @@
       inherit (self) outputs;
 
       system = "x86_64-linux";
+      overlays = import ./overlays;
 
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        overlays = [ overlays.calibre ];
       };
 
       lib = nixpkgs.lib;
