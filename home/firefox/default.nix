@@ -1,5 +1,10 @@
-{ pkgs, ... }:
 {
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}:
+lib.mkIf osConfig.programs.firefox.enable {
   programs.firefox = {
     enable = true;
     profiles.nico = {
