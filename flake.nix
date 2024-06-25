@@ -25,15 +25,15 @@
       };
 
       lib = nixpkgs.lib;
-    in
-    {
-      nixosConfigurations = {
-        marr = lib.nixosSystem {
+
+      mkSystem =
+        {
+          hostname,
+          extraModules ? [ ],
+        }:
+        lib.nixosSystem {
           inherit system;
-          modules = [
-            ./hosts/marr/configuration.nix
-            #inputs.nixos-hardware.nixosModules.dell-xps-15-9510-nvidia
-          ];
+          modules = [ ./hosts/${hostname}/configuration.nix ] ++ extraModules;
           specialArgs = {
             inherit
               inputs
@@ -41,9 +41,23 @@
               system
               lib
               pkgs
+              hostname
               ;
+
+            username = "nico";
           };
         };
+    in
+    {
+      nixosConfigurations = {
+        marr = mkSystem {
+          hostname = "marr";
+          extraModules = [
+            #inputs.nixos-hardware.nixosModules.dell-xps-15-9510-nvidia
+          ];
+        };
+
+        brontes = mkSystem { hostname = "brontes"; };
       };
 
       devShells."${system}".default = pkgs.mkShell {
