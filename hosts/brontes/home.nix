@@ -1,12 +1,11 @@
 {
   pkgs,
-  stateVersion,
   username,
   config,
   ...
 }:
 {
-  home-manager.users.${username} = {
+  home-manager.users.${username} = rec {
     imports = [
       ../../home/firefox
       ../../home/fish
@@ -17,11 +16,37 @@
       ../../home/sway/swaync
       ../../home/sway/waybar
       ../../home/hyprland
+      ../../home/hyprlock
     ];
 
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
+    };
+    dconf = {
+      enable = true;
+      settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    };
+    gtk = {
+      enable = true;
+      theme = {
+        name = "Catppuccin-Frappe-Compact-Lavender-Dark";
+        package = pkgs.catppuccin-gtk.override {
+          accents = [ "lavender" ];
+          size = "compact";
+          variant = "frappe";
+        };
+      };
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.catppuccin-papirus-folders.override {
+          accent = "lavender";
+          flavor = "frappe";
+        };
+      };
+      cursorTheme = with home.pointerCursor; {
+        inherit name package size;
+      };
     };
 
     services.blueman-applet.enable = true;
@@ -29,6 +54,13 @@
     home = {
       stateVersion = config.system.stateVersion;
       inherit username;
+      pointerCursor = {
+        gtk.enable = true;
+        x11.enable = true;
+        name = "catppuccin-frappe-lavender-cursors";
+        package = pkgs.catppuccin-cursors.frappeLavender;
+        size = 32;
+      };
 
       packages =
         let
