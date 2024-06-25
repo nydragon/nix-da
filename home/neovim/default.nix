@@ -27,7 +27,6 @@
       rustfmt # Rust formatter
       shfmt # Shell, Bash etc.
       nixfmt-rfc-style
-      stylua
 
       # Misc
       ripgrep
@@ -36,14 +35,6 @@
       nodejs_22
       clang
       tree-sitter
-
-      # R
-      (rWrapper.override {
-        packages = with rPackages; [
-          styler
-          languageserver
-        ];
-      })
     ];
   };
 }

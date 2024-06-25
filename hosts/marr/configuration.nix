@@ -32,9 +32,6 @@ in
   hardware.bluetooth.powerOnBoot = true;
   hardware.opengl.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Asia/Seoul";
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "fr";
