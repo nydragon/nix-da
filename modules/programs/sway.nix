@@ -4,7 +4,7 @@
   lib,
   ...
 }:
-lib.mkIf config.programs.firefox.enable {
+lib.mkIf config.programs.sway.enable {
   programs.sway = {
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [

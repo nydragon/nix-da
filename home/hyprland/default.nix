@@ -12,7 +12,10 @@ lib.mkIf osConfig.programs.hyprland.enable {
     settings = {
       "$mod" = "SUPER";
 
-      monitor = ",preferred,auto,auto";
+      monitor = [
+        "DP-2,1920x1080@144, 1920x0, 1"
+        "HDMI-A-1,1920x1080@60, 0x0, 1"
+      ];
 
       general = {
         gaps_in = 5;
@@ -94,9 +97,11 @@ lib.mkIf osConfig.programs.hyprland.enable {
       bind =
         [
           "$mod, D, exec, rofi -config ${config.home.homeDirectory}/.config/rofi/config.rasi -show combi -automatic-save-to-history"
+          "$mod, E, exec, ${pkgs.gnome.nautilus}/bin/nautilus"
           "$mod, Return, exec, ${pkgs.alacritty}/bin/alacritty"
           "$mod SHIFT, Q, killactive,"
-
+          "$mod SHIFT, P, exec, rofi -show -p -modi p:rofi-power-menu"
+          "$mod SHIFT, C, exec, hyprctl reload"
           "$mod, left, movefocus, l"
           "$mod, right, movefocus, r"
           "$mod, up, movefocus, u"
@@ -105,7 +110,8 @@ lib.mkIf osConfig.programs.hyprland.enable {
           # Example special workspace (scratchpad)
           "$mod, S, togglespecialworkspace, magic"
           "$mod SHIFT, S, movetoworkspace, special:magic"
-
+          "$mod, X, fullscreen, 1"
+          "$mod, F, fullscreen, 0"
           "$mod, N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
         ]
         ++ (

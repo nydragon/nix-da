@@ -1,1 +1,1 @@
-{ programs.hyprland.enable = true; }
+{ lib, config, ... }: lib.mkIf config.programs.hyprland.enable { }

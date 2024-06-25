@@ -11,5 +11,6 @@
     ./programs/lazygit.nix
     ./programs/steam.nix
     ./programs/hyprland.nix
+    ./home-manager.nix
   ];
 }
