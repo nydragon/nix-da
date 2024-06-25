@@ -75,6 +75,7 @@ in
     fish.enable = true;
     firefox.enable = true;
     thunderbird.enable = true;
+    sway.enable = true;
   };
 
   home-manager.users.${username} = import ../../home {
