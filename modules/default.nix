@@ -3,6 +3,7 @@
   imports = [
     ./locale.nix
     ./networking.nix
+    ./fonts.nix
     ./nix
     ./programs/firefox.nix
     ./programs/thunderbird.nix

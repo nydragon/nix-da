@@ -229,15 +229,6 @@ in
     brightnessctl
   ];
 
-  fonts = with pkgs; {
-    packages = [
-      (nerdfonts.override { fonts = [ "Noto" ]; })
-      d2coding
-      jigmo
-      last-resort
-    ];
-  };
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
