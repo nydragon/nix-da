@@ -1,7 +1,7 @@
 # Reference https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
 { lib, config, ... }:
-{
-  programs.firefox = lib.mkIf config.programs.firefox.enable {
+lib.mkIf config.programs.firefox.enable {
+  programs.firefox = {
     preferencesStatus = "locked";
     preferences = {
       "browser.bookmarks.restore_default_bookmarks" = false;

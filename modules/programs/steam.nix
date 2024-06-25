@@ -4,8 +4,8 @@
   config,
   ...
 }:
-{
-  programs.steam = lib.mkIf config.programs.steam.enable {
+lib.mkIf config.programs.steam.enable {
+  programs.steam = {
     gamescopeSession.enable = true;
     extest.enable = true;
     localNetworkGameTransfers.openFirewall = true;
