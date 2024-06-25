@@ -30,6 +30,12 @@
     };
   };
 
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
   programs = {
     steam.enable = true;
     fish.enable = true;
@@ -61,6 +67,7 @@
   services.gnome.gnome-keyring.enable = true;
   environment.systemPackages = with pkgs; [
     fish
+    wireguard-tools
     git
     htop
     eza

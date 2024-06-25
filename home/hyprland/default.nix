@@ -17,6 +17,15 @@ lib.mkIf osConfig.programs.hyprland.enable {
         "HDMI-A-1,1920x1080@60, 0x0, 1"
       ];
 
+      exec-once = [
+        "${pkgs.swaynotificationcenter}/bin/swaync"
+        "${pkgs.nextcloud-client}/bin/nextcloud --background"
+        "${pkgs.kdeconnect}/bin/kdeconnect-indicator"
+        "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window"
+        "${pkgs.waybar}/bin/waybar"
+        #"${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store -max-items 10"
+      ];
+
       general = {
         gaps_in = 5;
         gaps_out = 20;
@@ -99,8 +108,9 @@ lib.mkIf osConfig.programs.hyprland.enable {
           "$mod, D, exec, rofi -config ${config.home.homeDirectory}/.config/rofi/config.rasi -show combi -automatic-save-to-history"
           "$mod, E, exec, ${pkgs.gnome.nautilus}/bin/nautilus"
           "$mod, Return, exec, ${pkgs.alacritty}/bin/alacritty"
+          #"$mod, S, exec, rofi -show clipboard -show-icons"
           "$mod SHIFT, Q, killactive,"
-          "$mod SHIFT, P, exec, rofi -show -p -modi p:rofi-power-menu"
+          "$mod SHIFT, P, exec, rofi -show p -modi p:rofi-power-menu"
           "$mod SHIFT, C, exec, hyprctl reload"
           "$mod, left, movefocus, l"
           "$mod, right, movefocus, r"

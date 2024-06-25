@@ -35,6 +35,7 @@
           scripts = import ../../home/scripts/list.nix { inherit pkgs; };
           programs = with pkgs; [
             keepassxc
+            kdeconnect
             nextcloud-client
             cliphist
             digikam
