@@ -35,6 +35,9 @@
       nodejs_22
       clang
       tree-sitter
+      fd
+      luajitPackages.luarocks
+      wl-clipboard
     ];
   };
 }

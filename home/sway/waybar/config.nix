@@ -5,7 +5,7 @@
     "clock"
     "sway/mode"
   ];
-  modules-center = [ "sway/workspaces" ];
+  modules-center = [ "hyprland/workspaces" ];
   modules-right = [
     "backlight"
     "pulseaudio"
@@ -169,11 +169,11 @@
     scroll-step = 1;
     tooltip = false;
   };
-  "sway/mode" = {
-    format = "{}";
-    max-length = 50;
-  };
-  "sway/workspaces" = {
+  #"sway/mode" = {
+  #format = "{}";
+  #max-length = 50;
+  #};
+  "hyprland/workspaces" = {
     all-outputs = true;
     disable-scroll = true;
     format = "{name}";

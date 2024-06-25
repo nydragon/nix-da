@@ -10,5 +10,6 @@
     ./programs/sway.nix
     ./programs/lazygit.nix
     ./programs/steam.nix
+    ./programs/hyprland.nix
   ];
 }

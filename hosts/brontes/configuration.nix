@@ -21,14 +21,20 @@ in
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
   networking.hostName = hostname;
+  services.blueman.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.greetd.greetd}/bin/agreety --cmd ${pkgs.hyprland}/bin/hyprland";
+        user = "${username}";
+      };
+      default_session = initial_session;
+    };
+  };
 
   programs = {
     steam.enable = true;
@@ -37,6 +43,7 @@ in
     thunderbird.enable = true;
   };
 
+  home-manager.backupFileExtension = "backup";
   home-manager.users.${username} = {
     imports = [
       ../../home/firefox
@@ -44,6 +51,10 @@ in
       ../../home/neovim
       ../../home/thunderbird
       ../../home/git
+      ../../home/rofi
+      ../../home/sway/swaync
+      ../../home/sway/waybar
+      ../../home/hyprland
     ];
 
     programs.direnv = {
@@ -62,6 +73,7 @@ in
           programs = with pkgs; [
             keepassxc
             nextcloud-client
+            cliphist
           ];
         in
         programs ++ scripts;
@@ -95,6 +107,7 @@ in
     eza
     bat
     kdeconnect
+    swaynotificationcenter
   ];
 
   system.stateVersion = stateVersion;
