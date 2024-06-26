@@ -6,6 +6,8 @@
   ...
 }:
 lib.mkIf osConfig.programs.hyprland.enable {
+  home.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.variables = [ "--all" ];
@@ -68,7 +70,11 @@ lib.mkIf osConfig.programs.hyprland.enable {
           vibrancy = 0.1696;
         };
       };
-
+      windowrulev2 = [
+        "float,initialClass:(com.nextcloud.desktopclient.nextcloud)"
+        "float,initialClass:(org.keepassxc.KeePassXC)"
+        "workspace 5,initialClass:(lollypop)"
+      ];
       # https://wiki.hyprland.org/Configuring/Variables/#animations
       animations = {
 
@@ -105,6 +111,8 @@ lib.mkIf osConfig.programs.hyprland.enable {
         disable_hyprland_logo = false; # If true disables the random hyprland logo / anime girl background. :(
       };
 
+      bindm = [ "$mod,mouse:272,movewindow" ];
+
       bind =
         [
           "$mod, D, exec, rofi -config ${config.home.homeDirectory}/.config/rofi/config.rasi -show combi -automatic-save-to-history"
@@ -126,6 +134,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
           "$mod, X, fullscreen, 1"
           "$mod, F, fullscreen, 0"
           "$mod, N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
+
         ]
         ++ (
           # workspaces
