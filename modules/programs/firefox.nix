@@ -26,6 +26,8 @@ lib.mkIf config.programs.firefox.enable {
     };
     policies = {
       PasswordManagerEnabled = false;
+      AutofillCreditCardEnabled = false;
+      AutofillAddressEnabled = false;
       # Check about:support for extension/add-on ID strings.
       ExtensionSettings = {
         "uBlock0@raymondhill.net" = {

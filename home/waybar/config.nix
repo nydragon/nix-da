@@ -1,6 +1,6 @@
 {
   position = "top";
-  layer = "top";
+  layer = "bottom";
   reload_style_on_change = true;
   modules-left = [
     "tray"

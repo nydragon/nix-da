@@ -49,6 +49,10 @@ lib.mkIf osConfig.programs.hyprland.enable {
         layout = "dwindle";
       };
 
+      input = {
+        kb_options = "compose:caps";
+      };
+
       decoration = {
         rounding = 10;
 
