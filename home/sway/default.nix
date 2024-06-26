@@ -9,8 +9,8 @@
   imports = [
     ./swayidle.nix
     ./swaylock.nix
-    ./swaync
-    ./waybar
+    ./../swaync
+    ./../waybar
   ];
 
   wayland.windowManager.sway =

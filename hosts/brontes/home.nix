@@ -13,8 +13,8 @@
       ../../home/thunderbird
       ../../home/git
       ../../home/rofi
-      ../../home/sway/swaync
-      ../../home/sway/waybar
+      ../../home/swaync
+      ../../home/waybar
       ../../home/hyprland
       ../../home/hyprlock
     ];
@@ -27,6 +27,7 @@
       enable = true;
       settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
     };
+    qt.platformTheme.name = "gtk";
     gtk = {
       enable = true;
       theme = {
