@@ -17,6 +17,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = hostname;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
   services.greetd = {
@@ -28,6 +30,14 @@
       };
       default_session = initial_session;
     };
+  };
+  xdg.portal = {
+    enable = true;
+    config.common.default = "*";
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+    ];
   };
 
   services.pipewire = {

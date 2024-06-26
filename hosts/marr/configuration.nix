@@ -30,6 +30,8 @@ in
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+
   hardware.graphics.enable = true;
 
   # Configure keymap in X11
@@ -43,7 +45,6 @@ in
     powerKey = "hibernate";
   };
 
-  services.blueman.enable = true;
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=1200
   '';

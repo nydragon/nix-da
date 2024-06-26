@@ -23,7 +23,9 @@ lib.mkIf osConfig.programs.hyprland.enable {
         "${pkgs.kdeconnect}/bin/kdeconnect-indicator"
         "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window"
         "${pkgs.waybar}/bin/waybar"
-        #"${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store -max-items 10"
+        "${pkgs.keepassxc}/bin/keepassxc"
+        "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store -max-items 10"
+        (lib.mkIf config.services.hypridle.enable "${pkgs.hypridle}/bin/hypridle")
       ];
 
       general = {

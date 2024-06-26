@@ -17,6 +17,7 @@
       ../../home/waybar
       ../../home/hyprland
       ../../home/hyprlock
+      ../../home/hypridle
     ];
 
     programs.direnv = {

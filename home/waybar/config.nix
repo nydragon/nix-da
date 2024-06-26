@@ -1,11 +1,17 @@
 {
+  position = "top";
+  layer = "top";
+  reload_style_on_change = true;
   modules-left = [
     "tray"
     "privacy"
     "clock"
     "sway/mode"
   ];
-  modules-center = [ "sway/workspaces" ];
+  modules-center = [
+    "sway/workspaces"
+    "hyprland/workspaces"
+  ];
   modules-right = [
     "backlight"
     "pulseaudio"
@@ -111,7 +117,6 @@
       deactivated = "";
     };
   };
-  layer = "bottom";
   memory = {
     format = " {}%";
     interval = 30;
@@ -122,7 +127,6 @@
     format-wifi = "{essid} ({signalStrength}%) ";
     on-click = "alacritty -t nmtui -e nmtui";
   };
-  position = "top";
   privacy = {
     icon-size = 18;
     icon-spacing = 4;
@@ -176,6 +180,10 @@
   "sway/workspaces" = {
     all-outputs = true;
     disable-scroll = true;
+    format = "{name}";
+  };
+  "hyprland/workspaces" = {
+    all-outputs = true;
     format = "{name}";
   };
   tray = {

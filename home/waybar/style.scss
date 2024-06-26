@@ -62,6 +62,7 @@ window#waybar.hidden {
   background-color: rgba(13, 214, 250, 0.4);
 
   button {
+    color: white;
     padding: 1px 5px;
   }
 
@@ -71,6 +72,14 @@ window#waybar.hidden {
 
   button.focused {
     background-color: rgba(50, 194, 219, 0.7);
+  }
+
+  button.active {
+    background-color: rgba(80, 194, 219, 0.7);
+  }
+
+  button.urgent {
+    background-color: rgba(255, 0, 0, 0.7);
   }
 }
 
