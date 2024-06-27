@@ -40,6 +40,7 @@
     ];
   };
 
+  services.dbus.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -54,6 +55,7 @@
     hyprland.enable = true;
   };
 
+  security.polkit.enable = true;
   users = {
     defaultUserShell = pkgs.fish;
     users.${username} = {

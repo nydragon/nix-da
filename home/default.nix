@@ -5,7 +5,7 @@
   pkgs,
   ...
 }:
-rec {
+{
   imports = [
     ./firefox
     ./fish
@@ -15,11 +15,11 @@ rec {
     ./thunderbird
     ./git
     ./vscodium
+    ./themes/catppuccin.nix
   ];
 
   dconf = {
     enable = true;
-    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
     settings."org/virt-manager/virt-manager/connections" = {
       autoconnect = [ "qemu:///system" ];
       uris = [ "qemu:///system" ];
@@ -27,30 +27,6 @@ rec {
   };
 
   services.blueman-applet.enable = true;
-
-  qt.platformTheme.name = "gtk";
-
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Catppuccin-Frappe-Compact-Lavender-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "lavender" ];
-        size = "compact";
-        variant = "frappe";
-      };
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.catppuccin-papirus-folders.override {
-        accent = "lavender";
-        flavor = "frappe";
-      };
-    };
-    cursorTheme = with home.pointerCursor; {
-      inherit name package size;
-    };
-  };
 
   programs.direnv = {
     enable = true;
@@ -61,14 +37,6 @@ rec {
     inherit stateVersion;
     inherit username;
     inherit homeDirectory;
-
-    pointerCursor = {
-      gtk.enable = true;
-      x11.enable = true;
-      name = "catppuccin-frappe-lavender-cursors";
-      package = pkgs.catppuccin-cursors.frappeLavender;
-      size = 32;
-    };
 
     packages =
       let

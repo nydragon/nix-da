@@ -25,7 +25,7 @@ lib.mkIf osConfig.programs.firefox.enable {
               definedAliases = [ "@nixpkg" ];
             };
             "NixOS Wiki" = {
-              urls = [ { template = "https://wiki.nixos.org/index.php?search={searchTerms}"; } ];
+              urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
               icon = nixicon;
               definedAliases = [ "@nixwiki" ];
             };

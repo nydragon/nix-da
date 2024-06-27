@@ -138,7 +138,9 @@ lib.mkIf osConfig.programs.hyprland.enable {
           "$mod, X, fullscreen, 1"
           "$mod, F, fullscreen, 0"
           "$mod, N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
-
+          "$mod, U, exec, ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot -o ~/Pictures/screenshots -m region"
+          "$mod CTRL, U, exec, ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot -o ~/Pictures/screenshots -m window"
+          "$mod SHIFT, U, exec, ${pkgs.hyprshot}/bin/hyprshot -o ~/Pictures/screenshots -m active -m output"
         ]
         ++ (
           # workspaces
