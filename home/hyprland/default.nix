@@ -76,7 +76,9 @@ lib.mkIf osConfig.programs.hyprland.enable {
       };
       windowrulev2 = [
         "float,initialClass:(com.nextcloud.desktopclient.nextcloud)"
+        "bordercolor rgba(FF0000AA) rgba(88080877),fullscreen:1"
         "float,initialClass:(org.keepassxc.KeePassXC)"
+        "workspace 2,initialClass:(firefox)"
         "workspace 5,initialClass:(lollypop)"
       ];
       # https://wiki.hyprland.org/Configuring/Variables/#animations

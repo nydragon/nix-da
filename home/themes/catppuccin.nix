@@ -1,4 +1,8 @@
 { pkgs, ... }:
+let
+  validatePath =
+    s: if (builtins.pathExists s) then (builtins.baseNameOf s) else throw "${s} does not exist";
+in
 rec {
   qt.platformTheme.name = "gtk";
 
@@ -9,16 +13,16 @@ rec {
 
   gtk = {
     enable = true;
-    theme = {
-      name = "Catppuccin-Frappe-Compact-Lavender-Dark";
+    theme = rec {
+      name = validatePath "${package}/share/themes/catppuccin-frappe-lavender-compact+default";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "lavender" ];
         size = "compact";
         variant = "frappe";
       };
     };
-    iconTheme = {
-      name = "Papirus-Dark";
+    iconTheme = rec {
+      name = validatePath "${package}/share/icons/Papirus-Dark";
       package = pkgs.catppuccin-papirus-folders.override {
         accent = "lavender";
         flavor = "frappe";
