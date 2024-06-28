@@ -12,5 +12,6 @@
     ./programs/steam.nix
     ./programs/hyprland.nix
     ./home-manager.nix
+    ./system/mime.nix
   ];
 }

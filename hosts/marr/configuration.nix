@@ -1,24 +1,18 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 {
-  config,
   pkgs,
-  lib,
   inputs,
-  system,
   username,
   hostname,
   ...
 }:
-let
-  stateVersion = "23.11";
-  homeDirectory = "/home/${username}";
-in
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
     ../../modules
+    ./home.nix
   ];
 
   # Bootloader.
@@ -40,35 +34,9 @@ in
     variant = "";
   };
 
-  services.logind = {
-    lidSwitch = "suspend-then-hibernate";
-    powerKey = "hibernate";
-  };
-
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=1200
   '';
-
-  xdg.mime = {
-    enable = true;
-    defaultApplications =
-      let
-        fileManager = "org.gnome.Nautilus.desktop";
-        browser = "firefox.desktop";
-      in
-      {
-        "inode/directory" = fileManager;
-        "application/zip" = fileManager;
-        "application/pdf" = browser;
-        "x-www-browser" = browser;
-        "text/html" = browser;
-        "image/*" = "org.gnome.Loupe.desktop";
-        "image/png" = "org.gnome.Loupe.desktop";
-        "image/jpeg" = "org.gnome.Loupe.desktop";
-        "x-scheme-handler/http" = browser;
-        "x-scheme-handler/https" = browser;
-      };
-  };
 
   programs = {
     dconf.enable = true;
@@ -77,19 +45,6 @@ in
     firefox.enable = true;
     thunderbird.enable = true;
     sway.enable = true;
-  };
-
-  home-manager.users.${username} = import ../../home {
-    inherit
-      config
-      pkgs
-      system
-      inputs
-      stateVersion
-      username
-      lib
-      homeDirectory
-      ;
   };
 
   #: Virtualisation {{{
@@ -104,6 +59,12 @@ in
   #: }}}
 
   #: Power Consumption {{{
+
+  services.logind = {
+    lidSwitch = "suspend-then-hibernate";
+    powerKey = "hibernate";
+  };
+
   services.thermald.enable = true;
 
   services.tlp = {
@@ -245,5 +206,5 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = stateVersion; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 }

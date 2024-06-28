@@ -1,6 +1,6 @@
 {
-  pkgs,
   username,
+  pkgs,
   config,
   ...
 }:
@@ -9,24 +9,29 @@
     imports = [
       ../../home/firefox
       ../../home/fish
+      ../../home/sway
       ../../home/neovim
+      ../../home/rofi
       ../../home/thunderbird
       ../../home/git
-      ../../home/rofi
-      ../../home/swaync
-      ../../home/waybar
-      ../../home/hyprland
-      ../../home/hyprlock
-      ../../home/hypridle
+      ../../home/vscodium
       ../../home/themes/catppuccin.nix
     ];
+
+    dconf = {
+      enable = true;
+      settings."org/virt-manager/virt-manager/connections" = {
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
+      };
+    };
+
+    services.blueman-applet.enable = true;
 
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
-
-    services.blueman-applet.enable = true;
 
     home = {
       stateVersion = config.system.stateVersion;
@@ -34,12 +39,7 @@
 
       packages =
         let
-          scripts = import ../../home/scripts/list.nix { inherit pkgs; };
-          programs = with pkgs; [
-            keepassxc
-            kdeconnect
-            nextcloud-client
-            cliphist
+          pk = with pkgs; [
             digikam
             fragments
             element-desktop
@@ -48,7 +48,6 @@
             gnome.seahorse
             gimp
             vlc
-            pavucontrol
             thunderbird
             keepassxc
             gnome.nautilus
@@ -57,9 +56,10 @@
             varia
             signal-desktop
             calibre
-            alacritty
 
-            # proprietary
+            # Proprietary
+            postman
+            mongodb-compass
             obsidian
 
             # CLI tools
@@ -74,10 +74,15 @@
             lazygit
             fd
             ripgrep
-
+            swaybg
+          ];
+          scripts = with import ../../home/scripts { inherit pkgs; }; [
+            screenshot
+            set-background
+            nixedit
           ];
         in
-        programs ++ scripts;
+        scripts ++ pk;
     };
   };
 }

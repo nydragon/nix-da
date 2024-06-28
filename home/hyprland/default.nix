@@ -74,13 +74,24 @@ lib.mkIf osConfig.programs.hyprland.enable {
           vibrancy = 0.1696;
         };
       };
-      windowrulev2 = [
-        "float,initialClass:(com.nextcloud.desktopclient.nextcloud)"
-        "bordercolor rgba(FF0000AA) rgba(88080877),fullscreen:1"
-        "float,initialClass:(org.keepassxc.KeePassXC)"
-        "workspace 2,initialClass:(firefox)"
-        "workspace 5,initialClass:(lollypop)"
-      ];
+      windowrulev2 =
+        let
+          mkRegexList = list: "^(${(lib.strings.concatStringsSep "|" list)})$";
+        in
+        [
+          "float,initialClass:(${
+            mkRegexList [
+              "com.nextcloud.desktopclient.nextcloud"
+              "soffice"
+              "xdg-desktop-portal-gtk"
+            ]
+          })"
+          "bordercolor rgb(e50000) rgb(ff8d00) rgb(ffee00) rgb(028121) rgb(004cff) rgb(770088), fullscreen:1"
+          "workspace 2,initialClass:(${mkRegexList [ "firefox" ]})"
+          "workspace 3,initialClass:(${mkRegexList [ "obsidian" ]})"
+          "workspace 4,initialClass:(${mkRegexList [ "discord" ]})"
+          "workspace 5,initialClass:(${mkRegexList [ "lollypop" ]})"
+        ];
       # https://wiki.hyprland.org/Configuring/Variables/#animations
       animations = {
 
@@ -106,11 +117,6 @@ lib.mkIf osConfig.programs.hyprland.enable {
         preserve_split = true; # You probably want this
       };
 
-      # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-      #master = {
-      #new_status = "master";
-      #};
-
       # https://wiki.hyprland.org/Configuring/Variables/#misc
       misc = {
         force_default_wallpaper = -1; # Set to 0 or 1 to disable the anime mascot wallpapers
@@ -126,7 +132,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
           "$mod, Return, exec, ${pkgs.alacritty}/bin/alacritty"
           #"$mod, S, exec, rofi -show clipboard -show-icons"
           "$mod SHIFT, Q, killactive,"
-          "$mod SHIFT, P, exec, rofi -show p -modi p:rofi-power-menu"
+          "$mod SHIFT, P, exec, rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu"
           "$mod, P, exec, cliphist wipe & ${pkgs.hyprlock}/bin/hyprlock"
           "$mod SHIFT, C, exec, hyprctl reload"
           "$mod, left, movefocus, l"
@@ -143,6 +149,19 @@ lib.mkIf osConfig.programs.hyprland.enable {
           "$mod, U, exec, ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot -o ~/Pictures/screenshots -m region"
           "$mod CTRL, U, exec, ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot -o ~/Pictures/screenshots -m window"
           "$mod SHIFT, U, exec, ${pkgs.hyprshot}/bin/hyprshot -o ~/Pictures/screenshots -m active -m output"
+
+          #: Brightness and Media {{{
+          ",XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl s +10%"
+          ",XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl s 10%-"
+          ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 5"
+          ",XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 5"
+          ",XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source -m"
+          ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
+          ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+          ",XF86AudioPause, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+          ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
+          ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
+          #: }}}
         ]
         ++ (
           # workspaces
