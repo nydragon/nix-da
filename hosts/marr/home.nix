@@ -16,6 +16,7 @@
       ../../home/git
       ../../home/vscodium
       ../../home/themes/catppuccin.nix
+      ../../home
     ];
 
     dconf = {

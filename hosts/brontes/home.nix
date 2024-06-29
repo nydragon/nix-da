@@ -19,6 +19,7 @@
       ../../home/hyprlock
       ../../home/hypridle
       ../../home/themes/catppuccin.nix
+      ../../home
     ];
 
     programs.direnv = {
