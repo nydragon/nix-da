@@ -147,16 +147,6 @@
   services.gnome.gnome-keyring.enable = true;
   services.flatpak.enable = true;
 
-  environment.sessionVariables = {
-    XDG_CACHE_HOME = "$HOME/.cache";
-    XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME = "$HOME/.local/share";
-    XDG_STATE_HOME = "$HOME/.local/state";
-    XDG_CURRENT_DESKTOP = "sway";
-    MANROFFOPT = "-c";
-    MANPAGER = "sh -c 'col -bx | ${pkgs.bat}/bin/bat -l man -p'";
-  };
-
   environment.variables = {
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
     MOZ_ENABLE_WAYLAND = 1;

@@ -13,5 +13,6 @@
     ./programs/hyprland.nix
     ./home-manager.nix
     ./system/mime.nix
+    ./env.nix
   ];
 }
