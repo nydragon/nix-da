@@ -19,7 +19,6 @@
 
       # Formatter
       python311Packages.black # Python formatter
-      #rPackages.styler # R formatter
       clang-tools
       nodePackages_latest.prettier # JSON, JS, TS formatter
       yamlfmt # YAML formatter
@@ -27,6 +26,7 @@
       rustfmt # Rust formatter
       shfmt # Shell, Bash etc.
       nixfmt-rfc-style
+      stylua # lua formatter
 
       # Misc
       ripgrep

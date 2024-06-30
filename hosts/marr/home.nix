@@ -38,52 +38,46 @@
       stateVersion = config.system.stateVersion;
       inherit username;
 
-      packages =
-        let
-          pk = with pkgs; [
-            digikam
-            fragments
-            element-desktop
-            libreoffice
-            loupe
-            gnome.seahorse
-            gimp
-            vlc
-            thunderbird
-            keepassxc
-            gnome.nautilus
-            lollypop
-            protonmail-bridge-gui
-            varia
-            signal-desktop
-            calibre
+      packages = with pkgs; [
+        digikam
+        fragments
+        element-desktop
+        libreoffice
+        loupe
+        gnome.seahorse
+        gimp
+        vlc
+        thunderbird
+        keepassxc
+        gnome.nautilus
+        lollypop
+        protonmail-bridge-gui
+        varia
+        signal-desktop
+        calibre
 
-            # Proprietary
-            postman
-            mongodb-compass
-            obsidian
+        # Proprietary
+        postman
+        mongodb-compass
+        obsidian
 
-            # CLI tools
-            delta
-            fzf
-            jhead
-            fdupes
-            exiftool
-            sshfs
-            zip
-            unzip
-            lazygit
-            fd
-            ripgrep
-            swaybg
-          ];
-          scripts = with import ../../home/scripts { inherit pkgs; }; [
-            screenshot
-            set-background
-            nixedit
-          ];
-        in
-        scripts ++ pk;
+        # CLI tools
+        delta
+        fzf
+        jhead
+        fdupes
+        exiftool
+        sshfs
+        zip
+        unzip
+        lazygit
+        fd
+        ripgrep
+        swaybg
+
+        custom.scripts.screenshot
+        custom.scripts.set-background
+      ];
     };
   };
 }

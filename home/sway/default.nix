@@ -15,9 +15,6 @@
 
   wayland.windowManager.sway =
     let
-      screenshot = (import ../scripts { inherit pkgs; }).screenshot;
-      set-background = (import ../scripts { inherit pkgs; }).set-background;
-
       homeDirectory = config.home.homeDirectory;
       term = "${pkgs.alacritty}/bin/alacritty";
       filemanager = "${pkgs.gnome.nautilus}/bin/nautilus";
@@ -93,8 +90,8 @@
             "--locked XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
             "--locked XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
             "--locked XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
-            "Print" = "exec ${screenshot}/bin/screenshot";
-            "${mod}+u" = "exec ${screenshot}/bin/screenshot";
+            "Print" = "exec ${pkgs.custom.scripts.screenshot}/bin/screenshot";
+            "${mod}+u" = "exec ${pkgs.custom.scripts.screenshot}/bin/screenshot";
             #: Workspace movement {{{
             "--input-device=${inputs.kb.builtin} ${mod}+ampersand" = "workspace number 1";
             "--input-device=${inputs.kb.builtin} ${mod}+eacute" = "workspace number 2";
@@ -127,7 +124,7 @@
           { command = "${pkgs.kdeconnect}/bin/kdeconnect-indicator"; }
           { command = "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window"; }
           {
-            command = "${set-background}/bin/set-background -f ${wallpaper}";
+            command = "${pkgs.custom.scripts.set-background}/bin/set-background -f ${wallpaper}";
             always = true;
           }
           {

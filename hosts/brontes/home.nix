@@ -33,52 +33,49 @@
       stateVersion = config.system.stateVersion;
       inherit username;
 
-      packages =
-        let
-          scripts = import ../../home/scripts/list.nix { inherit pkgs; };
-          programs = with pkgs; [
-            keepassxc
-            kdeconnect
-            nextcloud-client
-            cliphist
-            digikam
-            fragments
-            element-desktop
-            libreoffice
-            loupe
-            gnome.seahorse
-            gimp
-            vlc
-            pavucontrol
-            thunderbird
-            keepassxc
-            gnome.nautilus
-            lollypop
-            protonmail-bridge-gui
-            varia
-            signal-desktop
-            calibre
-            alacritty
+      packages = with pkgs; [
+        keepassxc
+        kdeconnect
+        nextcloud-client
+        cliphist
+        digikam
+        fragments
+        element-desktop
+        libreoffice
+        loupe
+        gnome.seahorse
+        gimp
+        vlc
+        pavucontrol
+        thunderbird
+        keepassxc
+        gnome.nautilus
+        lollypop
+        protonmail-bridge-gui
+        varia
+        signal-desktop
+        calibre
+        alacritty
+        tagger
 
-            # proprietary
-            obsidian
+        # proprietary
+        obsidian
 
-            # CLI tools
-            delta
-            fzf
-            jhead
-            fdupes
-            exiftool
-            sshfs
-            zip
-            unzip
-            lazygit
-            fd
-            ripgrep
+        # CLI tools
+        delta
+        fzf
+        jhead
+        fdupes
+        exiftool
+        sshfs
+        zip
+        unzip
+        lazygit
+        fd
+        ripgrep
 
-          ];
-        in
-        programs ++ scripts;
+        custom.scripts.nixedit
+      ];
     };
   };
 }

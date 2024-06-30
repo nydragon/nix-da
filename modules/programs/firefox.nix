@@ -29,16 +29,24 @@ lib.mkIf config.programs.firefox.enable {
       AutofillCreditCardEnabled = false;
       AutofillAddressEnabled = false;
       # Check about:support for extension/add-on ID strings.
-      ExtensionSettings = {
-        "uBlock0@raymondhill.net" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-          installation_mode = "normal_install";
-        };
-        "firefox-translations-addon@mozilla.org" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/firefox-translations/latest.xpi";
-          installation_mode = "normal_install";
-        };
-      };
+      # WARNING: Does not seem to install extension, i.e useless
+      ExtensionSettings =
+        let
+          extension = shortId: uuid: {
+            name = uuid;
+            value = {
+              install_url = "https://addons.mozilla.org/en-US/firefox/downloads/latest/${shortId}/latest.xpi";
+              installation_mode = "force_installed";
+            };
+          };
+        in
+        builtins.listToAttrs [
+          (extension "ublock-origin" "uBlock0@raymondhill.net")
+          (extension "firefox-translations" "firefox-translations-addon@mozilla.org")
+          (extension "private-relay" "private-relay@firefox.com")
+          (extension "decentraleyes" "jid1-BoFifL9Vbdl2zQ@jetpack")
+          (extension "duckduckgo-for-firefox" "ddg@search.mozilla.org")
+        ];
       FirefoxHome = {
         Search = true;
         TopSites = false;

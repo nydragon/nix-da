@@ -20,8 +20,16 @@
 
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
         overlays = [ overlays.calibre ];
+        config = {
+          allowUnfree = true;
+          packageOverrides = pkgs: {
+            custom = {
+              scripts = import ./home/scripts { inherit pkgs; };
+            };
+          };
+        };
+
       };
 
       lib = nixpkgs.lib;

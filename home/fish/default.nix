@@ -12,6 +12,7 @@
       sd = ''cd "$(dirname "$HOME/$(env --chdir ~ fzf)")"'';
       mkdir = "mkdir --parent";
       cp = "cp -i";
+      mv = "mv -i";
     };
     functions =
       let
