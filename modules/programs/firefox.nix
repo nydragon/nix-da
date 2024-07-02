@@ -13,16 +13,25 @@ lib.mkIf config.programs.firefox.enable {
       "browser.urlbar.suggest.engines" = false;
       "browser.urlbar.suggest.history" = false;
       "browser.urlbar.suggest.topsites" = false;
+      "browser.urlbar.suggest.calculator" = true;
       "browser.urlbar.trimHttps" = false;
       "browser.sessionstore.restore_tabs_lazily" = true;
-      "extensions.pocket.enabled" = false;
-      "dom.security.https_only_mode" = true;
-      "extensions.htmlaboutaddons.recommendations.enabled" = false;
+      "browser.uitour.enabled" = false;
       "browser.dataFeatureRecommendations.enabled" = false;
       "browser.translations.automaticallyPopup" = false;
       "browser.translations.enable" = true;
+      "browser.preferences.moreFromMozilla" = false;
+      "browser.newtabpage.activity-stream.showSearch" = false;
+      "browser.newtabpage.activity-stream.feeds.topsites" = false;
+      "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
+      "extensions.pocket.enabled" = false;
+      "dom.security.https_only_mode" = true;
+      "extensions.htmlaboutaddons.recommendations.enabled" = false;
       "cookiebanners.service.mode" = 2;
       "cookiebanners.service.mode.privateBrowsing" = 2;
+      # Hides the recommendations tab at about:addons
+      "extensions.getAddons.showPane" = false;
+      "browser.shell.checkDefaultBrowser" = false;
     };
     policies = {
       PasswordManagerEnabled = false;
