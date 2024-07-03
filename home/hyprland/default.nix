@@ -50,6 +50,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
       };
 
       input = {
+        numlock_by_default = true;
         kb_options = "compose:caps";
       };
 
