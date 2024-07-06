@@ -73,7 +73,8 @@
         "networkmanager"
         "wheel"
         "audio"
-        "libvirtd"
+        "libvirtd" # VM OPs
+        "dialout" # Necessary for serial port interactions
       ];
       shell = pkgs.fish;
     };

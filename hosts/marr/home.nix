@@ -76,6 +76,7 @@
         swaybg
 
         custom.scripts.screenshot
+        custom.scripts.nixedit
         custom.scripts.set-background
       ];
     };

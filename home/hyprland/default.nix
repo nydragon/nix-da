@@ -20,12 +20,15 @@ lib.mkIf osConfig.programs.hyprland.enable {
       ];
 
       exec-once = [
+        "${pkgs.hyprpaper}/bin/hyprpaper"
         "${pkgs.swaynotificationcenter}/bin/swaync"
         "${pkgs.nextcloud-client}/bin/nextcloud --background"
         "${pkgs.kdeconnect}/bin/kdeconnect-indicator"
         "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window"
         "${pkgs.waybar}/bin/waybar"
-        "${pkgs.keepassxc}/bin/keepassxc"
+        # keepassxc ignores themeing and doesnt show up in system tray otherwise
+        # Dirty solution but hey
+        "sleep 3 && ${pkgs.keepassxc}/bin/keepassxc"
         "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store -max-items 10"
         (lib.mkIf config.services.hypridle.enable "${pkgs.hypridle}/bin/hypridle")
       ];
@@ -120,7 +123,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
 
       # https://wiki.hyprland.org/Configuring/Variables/#misc
       misc = {
-        force_default_wallpaper = -1; # Set to 0 or 1 to disable the anime mascot wallpapers
+        force_default_wallpaper = 0; # Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo = false; # If true disables the random hyprland logo / anime girl background. :(
       };
 

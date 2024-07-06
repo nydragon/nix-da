@@ -32,6 +32,7 @@ lib.mkIf config.programs.firefox.enable {
       # Hides the recommendations tab at about:addons
       "extensions.getAddons.showPane" = false;
       "browser.shell.checkDefaultBrowser" = false;
+      "privacy.clearOnShutdown.offlineApps" = true;
     };
     policies = {
       PasswordManagerEnabled = false;

@@ -30,6 +30,9 @@
               -a nixos-rebuild \
               -i ${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg
         '';
+        revert = ''
+          env --chdir $HOME/.nixconf sudo nixos-rebuild switch --flake .#$(hostname) --rollback
+        '';
       };
   };
 }

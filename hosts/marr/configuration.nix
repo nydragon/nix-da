@@ -128,6 +128,7 @@
         "wheel"
         "audio"
         "libvirtd"
+        "dialout" # Necessary for serial port interactions
       ];
       shell = pkgs.fish;
     };
