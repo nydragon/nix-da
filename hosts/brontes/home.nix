@@ -74,6 +74,7 @@
         lazygit
         fd
         ripgrep
+        wl-clipboard
 
         custom.scripts.nixedit
       ];

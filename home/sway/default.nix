@@ -60,8 +60,7 @@
             mod = config.wayland.windowManager.sway.config.modifier;
           in
           lib.mkOptionDefault {
-            # TODO: Update to use nixpkgs version of cliphist
-            "${mod}+p" = "exec cliphist wipe & ${pkgs.swaylock}/bin/swaylock";
+            "${mod}+p" = "exec ${pkgs.cliphist}/bin/cliphist wipe & ${pkgs.swaylock}/bin/swaylock";
             "${mod}+Shift+p" = "exec rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
             # Reload the config file
             "${mod}+Shift+c" = "reload";

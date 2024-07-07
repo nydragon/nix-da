@@ -74,6 +74,7 @@
         fd
         ripgrep
         swaybg
+        wl-clipboard
 
         custom.scripts.screenshot
         custom.scripts.nixedit

@@ -80,6 +80,9 @@
     };
   };
 
+  # Necessary for Nautilus to display trash, DVDs and for gnome-disk-utility to show file systems
+  services.gvfs.enable = true;
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
