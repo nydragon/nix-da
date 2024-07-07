@@ -21,12 +21,6 @@
       init = {
         defaultBranch = "master";
       };
-      #interactive = {
-      #diffFilter = "delta --color-only";
-      #};
-      #delta = {
-      #navigate = true;
-      #};
       merge = {
         conflictstyle = "diff3";
       };
