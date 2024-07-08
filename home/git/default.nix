@@ -4,11 +4,8 @@
     enable = true;
     userName = "Nydragon";
     userEmail = "contact@ccnlc.eu";
-    signing = {
-      key = "25FF8464F0627EC001296A4314AA30A865EA1209";
-      signByDefault = true;
-    };
     extraConfig = {
+      gpg.format = "ssh";
       push = {
         autoSetupRemote = true;
       };
@@ -26,6 +23,9 @@
       };
       diff = {
         colorMoved = "default";
+      };
+      user = {
+        signingKey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH0cON0May+E0KkDrmiHRo5O4uAAVw6dvqYKGsALybUJ";
       };
     };
     delta.enable = true;
