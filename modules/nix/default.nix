@@ -1,5 +1,11 @@
 { ... }:
 {
+
+  imports = [
+    ./nixpkgs.nix
+    ./overlays
+  ];
+
   nix = {
     gc = {
       automatic = true;

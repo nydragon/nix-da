@@ -1,5 +1,5 @@
 {
-  description = "Nydragon's configuration'";
+  description = "Nydragon's NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -8,84 +8,78 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Powered by
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
-    inputs@{ self, nixpkgs, ... }:
-    let
-      inherit (self) outputs;
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
 
-      system = "x86_64-linux";
-      overlays = import ./overlays;
-
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [ overlays.calibre ];
-        config = {
-          allowUnfree = true;
-          packageOverrides = pkgs: {
-            custom = {
-              scripts = import ./home/scripts { inherit pkgs; };
-            };
-          };
-        };
-
-      };
-
-      lib = nixpkgs.lib.extend (
-        self: super: {
-          my = import ./lib {
-            inherit pkgs inputs;
-            lib = self;
-          };
-        }
-      );
-
-      mkSystem =
+      perSystem =
         {
-          hostname,
-          extraModules ? [ ],
+          inputs',
+          config,
+          pkgs,
+          ...
         }:
-        lib.nixosSystem {
-          inherit system;
-          modules = [ ./hosts/${hostname}/configuration.nix ] ++ extraModules;
-          specialArgs = {
-            inherit
-              inputs
-              outputs
-              system
-              lib
-              pkgs
-              hostname
-              ;
-
-            username = "nico";
+        {
+          devShells.default = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              pre-commit
+              nixfmt-rfc-style
+              nodePackages.prettier
+              typos
+            ];
+            shellHook = ''
+              ${pkgs.pre-commit}/bin/pre-commit install -f
+            '';
           };
         };
-    in
-    {
-      nixosConfigurations = {
-        marr = mkSystem {
-          hostname = "marr";
-          extraModules = [
-            #inputs.nixos-hardware.nixosModules.dell-xps-15-9510-nvidia
-          ];
+
+      flake = rec {
+        templates = import ./templates;
+        # TODO: move that somewhere else
+        lib = inputs.nixpkgs.lib.extend (
+          self: super: {
+            my = import ./lib {
+              lib = self;
+              inherit inputs;
+            };
+          }
+        );
+
+        # TODO: move that somewhere else
+        nixosConfigurations = {
+          marr = lib.my.mkSystem {
+            hostname = "marr";
+            system = "x86_64-linux";
+            extraModules = [
+              #inputs.nixos-hardware.nixosModules.dell-xps-15-9510-nvidia
+            ];
+          };
+
+          brontes = lib.my.mkSystem {
+            hostname = "brontes";
+            system = "x86_64-linux";
+
+          };
+          #    styrak = lib.my.mkSystem {
+          #hostname = "styrak";
+          #system = "aarch64-linux";
+          #};
         };
-
-        brontes = mkSystem { hostname = "brontes"; };
       };
 
-      devShells."${system}".default = pkgs.mkShell {
-        buildInputs = with pkgs; [
-          pre-commit
-          nixfmt-rfc-style
-          nodePackages.prettier
-          typos
-        ];
-        shellHook = ''
-          ${pkgs.pre-commit}/bin/pre-commit install -f
-        '';
-      };
-      templates = import ./templates;
     };
+
 }
