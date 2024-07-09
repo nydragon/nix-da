@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   programs.rofi =
     let
@@ -19,9 +24,8 @@
           "run"
           # WARNING: ABI version mismatch
           # "calc"
-          # TODO: Update to use nixpkgs version of cliphist
-          "clipboard:cliphist-rofi-img"
-          "obsidian:${pkgs.rofi-obsidian}/bin/rofi-obsidian"
+          "clipboard:${lib.my.checkPath pkgs.cliphist "cliphist-rofi-img"}"
+          "obsidian:${lib.my.checkPath pkgs.rofi-obsidian "rofi-obsidian"}"
         ];
         matching = "fuzzy";
         sort = true;

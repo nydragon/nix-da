@@ -5,6 +5,7 @@ lib.mkIf config.programs.thunderbird.enable {
     preferences = {
       "mail.biff.play_sound" = false;
       "mail.chat.play_sound" = false;
+      "mail.pane_config.dynamic" = 2;
     };
   };
 }

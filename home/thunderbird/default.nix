@@ -5,12 +5,6 @@
     settings = {
       # https://superuser.com/a/13551
       "mailnews.wraplength" = 80;
-      "mail.pane_config.dynamic" = 2;
-      "mail.biff.play_sound" = false;
-      "mail.chat.play_sound" = false;
-      # Never allow cookies
-      "network.cookie.cookieBehavior" = 2;
-      "mailnews.start_page.enabled" = false;
       # 1 = Ascending
       # 2 = Descending
       "mailnews.default_sort_order" = 2;
