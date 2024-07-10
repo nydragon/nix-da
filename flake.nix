@@ -9,12 +9,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Powered by
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -71,15 +74,14 @@
           brontes = lib.my.mkSystem {
             hostname = "brontes";
             system = "x86_64-linux";
-
           };
-          #    styrak = lib.my.mkSystem {
-          #hostname = "styrak";
-          #system = "aarch64-linux";
-          #};
+
+          styrak = lib.my.mkSystem {
+            hostname = "styrak";
+            system = "x86_64-linux";
+            extraModules = [ inputs.disko.nixosModules.disko ];
+          };
         };
       };
-
     };
-
 }
