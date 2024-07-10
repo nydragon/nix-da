@@ -3,7 +3,6 @@
   pkgs,
   inputs,
   username,
-  hostname,
   ...
 }:
 {
@@ -20,7 +19,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-7adaa102-d438-4e9e-9972-4a3c91b887b3".device = "/dev/disk/by-uuid/7adaa102-d438-4e9e-9972-4a3c91b887b3";
-  networking.hostName = hostname;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;

@@ -2,7 +2,6 @@
   pkgs,
   inputs,
   username,
-  hostname,
   ...
 }:
 {
@@ -17,7 +16,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = hostname;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;

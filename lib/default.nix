@@ -18,15 +18,12 @@
     }:
     lib.nixosSystem {
       inherit system;
-      modules = [ ../hosts/${hostname}/configuration.nix ] ++ extraModules;
+      modules = [
+        ../hosts/${hostname}/configuration.nix
+        { networking.hostName = hostname; }
+      ] ++ extraModules;
       specialArgs = {
-        inherit
-          inputs
-          system
-          lib
-          hostname
-          ;
-
+        inherit inputs;
         username = "nico";
       };
     };
