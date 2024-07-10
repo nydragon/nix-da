@@ -14,7 +14,7 @@ rec {
   gtk = {
     enable = true;
     theme = rec {
-      name = validatePath "${package}/share/themes/catppuccin-frappe-lavender-compact+default";
+      name = validatePath "${package}/share/themes/catppuccin-frappe-lavender-compact";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "lavender" ];
         size = "compact";
