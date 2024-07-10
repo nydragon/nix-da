@@ -151,8 +151,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
           "$mod, F, fullscreen, 0"
           "$mod, N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
           "$mod, U, exec, ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot -o ~/Pictures/screenshots -m region"
-          "$mod CTRL, U, exec, ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot -o ~/Pictures/screenshots -m window"
-          "$mod SHIFT, U, exec, ${pkgs.hyprshot}/bin/hyprshot -o ~/Pictures/screenshots -m active -m output"
+          "$mod SHIFT, U, exec, ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot --raw -m region | ${pkgs.swappy}/bin/swappy -f -"
 
           #: Brightness and Media {{{
           ",XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl s +10%"
