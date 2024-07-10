@@ -20,7 +20,7 @@ rec {
 
       ## More Info
       - [Rust language](https://www.rust-lang.org/) - https://www.rust-lang.org/
-      - [Rust on the NixOS Wiki](https://nixos.wiki/wiki/Rust) - https://nixos.wiki/wiki/Rust
+      - [Rust on the NixOS Wiki](https://wiki.nixos.org/wiki/Rust) - https://wiki.nixos.org/wiki/Rust
     '';
   };
 

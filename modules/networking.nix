@@ -29,7 +29,7 @@
 
         # if packets are still dropped, they will show up in dmesg
         logReversePathDrops = true;
-        # wireguard trips rpfilter up https://nixos.wiki/wiki/WireGuard#Setting_up_WireGuard_with_NetworkManager
+        # wireguard trips rpfilter up https://wiki.nixos.org/wiki/WireGuard#Setting_up_WireGuard_with_NetworkManager
         extraCommands = ''
           ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport ${toString wgPort} -j RETURN
           ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport ${toString wgPort} -j RETURN
