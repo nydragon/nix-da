@@ -45,6 +45,8 @@
     sway.enable = true;
   };
 
+  services.printing.enable = true;
+
   #: Virtualisation {{{
   virtualisation.docker = {
     enable = true;
