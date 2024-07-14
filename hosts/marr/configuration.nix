@@ -170,14 +170,13 @@
   environment.systemPackages = with pkgs; [
     shared-mime-info
     fish
-    nextcloud-client
     git
-    firefox
     htop
+    nextcloud-client
+    kdeconnect
     alacritty
     eza
     bat
-    kdeconnect
     glib
     wireguard-tools
     dconf

@@ -17,7 +17,7 @@
     let
       homeDirectory = config.home.homeDirectory;
       term = "${pkgs.alacritty}/bin/alacritty";
-      filemanager = "${pkgs.gnome.nautilus}/bin/nautilus";
+      filemanager = "${pkgs.nautilus}/bin/nautilus";
       colors = {
         lavender = "#babbf1";
         black = "#000000";

@@ -44,12 +44,12 @@
         element-desktop
         libreoffice
         loupe
-        gnome.seahorse
+        seahorse
         gimp
         vlc
         thunderbird
         keepassxc
-        gnome.nautilus
+        nautilus
         lollypop
         protonmail-bridge-gui
         varia
