@@ -11,5 +11,12 @@
         '';
       });
     })
+
+    (final: prev: {
+      lollypop = prev.lollypop.override {
+        lastFMSupport = false;
+        youtubeSupport = false;
+      };
+    })
   ];
 }
