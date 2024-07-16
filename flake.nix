@@ -18,6 +18,11 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    rofi-obsidian = {
+      url = "github:nydragon/rofi-obsidian";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -51,7 +56,7 @@
           };
         };
 
-      flake = rec {
+      flake = {
         templates = import ./templates;
         # TODO: move that somewhere else
         lib = inputs.nixpkgs.lib.extend (

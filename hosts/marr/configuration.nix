@@ -49,7 +49,7 @@
 
   #: Virtualisation {{{
   virtualisation.docker = {
-    enable = true;
+    enable = false;
     enableOnBoot = false;
     rootless = {
       enable = true;

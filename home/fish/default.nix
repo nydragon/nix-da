@@ -13,9 +13,10 @@
       cp = "cp -i";
       mv = "mv -i";
     };
-    functions = {
+    functions = rec {
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
       nrun = "nix run nixpkgs#$argv[1] -- $argv[2..]";
+      nrunb = "${nrun} & disown";
       mv-bad-creation-date = ''
         ${lib.my.checkPath pkgs.exiftool "exiftool"} -if 'not $CreateDate' -p '$FileName' "$PWD/$argv[1]" | xargs -I {} mv -i "$PWD/$argv[1]/{}" "$argv[2]"
       '';

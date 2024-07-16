@@ -11,6 +11,7 @@
     ./programs/lazygit.nix
     ./programs/steam.nix
     ./programs/hyprland.nix
+    ./programs/ssh.nix
     ./home-manager.nix
     ./system/mime.nix
     ./env.nix
