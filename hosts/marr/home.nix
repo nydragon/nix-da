@@ -14,7 +14,6 @@
       ../../home/rofi
       ../../home/thunderbird
       ../../home/git
-      ../../home/vscodium
       ../../home/themes/catppuccin.nix
       ../../home
     ];

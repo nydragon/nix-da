@@ -26,6 +26,8 @@
       nix-direnv.enable = true;
     };
 
+    programs.vscode.enable = true;
+
     services.blueman-applet.enable = true;
 
     home = {

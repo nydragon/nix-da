@@ -4,5 +4,6 @@
     ./ssh
     ./hypridle
     ./hyprland
+    ./vscode
   ];
 }
