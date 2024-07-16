@@ -25,6 +25,7 @@
       inherit system;
       modules = [
         "${self}/hosts/${hostname}/configuration.nix"
+        "${self}/options"
         { networking.hostName = hostname; }
       ] ++ extraModules;
       specialArgs = {
