@@ -15,7 +15,8 @@
       bash-language-server
       lua-language-server
       zls
-      #rPackages.languageserver
+      typescript
+      nodePackages_latest.typescript-language-server
 
       # Formatter
       python311Packages.black # Python formatter
