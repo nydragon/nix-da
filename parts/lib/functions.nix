@@ -1,4 +1,9 @@
-{ lib, inputs, ... }:
+{
+  lib,
+  inputs,
+  self,
+  ...
+}:
 {
 
   # Verify the existence of a binary inside of a derivation.
@@ -19,11 +24,11 @@
     lib.nixosSystem {
       inherit system;
       modules = [
-        ../hosts/${hostname}/configuration.nix
+        "${self}/hosts/${hostname}/configuration.nix"
         { networking.hostName = hostname; }
       ] ++ extraModules;
       specialArgs = {
-        inherit inputs;
+        inherit inputs self;
         username = "nico";
       };
     };

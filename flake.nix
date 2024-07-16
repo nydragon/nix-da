@@ -28,7 +28,10 @@
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ ./hosts ];
+      imports = [
+        ./hosts
+        ./parts
+      ];
 
       systems = [
         "x86_64-linux"
@@ -36,12 +39,7 @@
       ];
 
       perSystem =
-        {
-          inputs',
-          config,
-          pkgs,
-          ...
-        }:
+        { pkgs, ... }:
         {
           devShells.default = pkgs.mkShell {
             buildInputs = with pkgs; [
@@ -55,18 +53,5 @@
             '';
           };
         };
-
-      flake = {
-        templates = import ./templates;
-        # TODO: move that somewhere else
-        lib = inputs.nixpkgs.lib.extend (
-          self: super: {
-            my = import ./lib {
-              lib = self;
-              inherit inputs;
-            };
-          }
-        );
-      };
     };
 }
