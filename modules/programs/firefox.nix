@@ -35,6 +35,7 @@ lib.mkIf config.programs.firefox.enable {
       "extensions.getAddons.showPane" = false;
       "browser.shell.checkDefaultBrowser" = false;
       "privacy.clearOnShutdown.offlineApps" = true;
+      "layout.spellcheckDefault" = true;
     };
     policies = {
       PasswordManagerEnabled = false;

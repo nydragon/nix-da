@@ -1,3 +1,4 @@
+# vim:fileencoding=utf-8:foldmethod=marker
 {
   pkgs,
   inputs,
@@ -53,6 +54,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
   programs = {
     steam.enable = true;
     fish.enable = true;
@@ -87,6 +89,7 @@
   };
 
   services.gnome.gnome-keyring.enable = true;
+
   environment.systemPackages = with pkgs; [
     fish
     wireguard-tools

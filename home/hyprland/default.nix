@@ -133,7 +133,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
         [
           "$mod, D, exec, rofi -config ${config.home.homeDirectory}/.config/rofi/config.rasi -show combi -automatic-save-to-history"
           "$mod, E, exec, ${pkgs.nautilus}/bin/nautilus"
-          "$mod, Return, exec, ${pkgs.alacritty}/bin/alacritty"
+          "$mod, Return, exec, ${pkgs.foot}/bin/foot"
           #"$mod, S, exec, rofi -show clipboard -show-icons"
           "$mod SHIFT, Q, killactive,"
           "$mod SHIFT, P, exec, rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu"

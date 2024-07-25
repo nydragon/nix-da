@@ -13,5 +13,9 @@ lib.mkIf config.programs.vscode.enable {
       #ms-vscode.atom-keybindings
       #akamud.vscode-theme-onedark
     ];
+    userSettings = {
+      "update.mode" = "none";
+      "idf.espIdfPath" = "/home/nico/esp/v5.2.2/esp-idf";
+    };
   };
 }

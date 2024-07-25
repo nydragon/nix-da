@@ -14,7 +14,7 @@
 
     (final: prev: {
       lollypop = prev.lollypop.override {
-        lastFMSupport = false;
+        #lastFMSupport = false;
         youtubeSupport = false;
       };
     })

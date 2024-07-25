@@ -5,5 +5,6 @@
     ./hypridle
     ./hyprland
     ./vscode
+    ./foot.nix
   ];
 }

@@ -24,9 +24,10 @@
       diff = {
         colorMoved = "default";
       };
-      user = {
-        signingKey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH0cON0May+E0KkDrmiHRo5O4uAAVw6dvqYKGsALybUJ";
-      };
+    };
+    signing = {
+      signByDefault = true;
+      key = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH0cON0May+E0KkDrmiHRo5O4uAAVw6dvqYKGsALybUJ";
     };
     delta.enable = true;
   };
