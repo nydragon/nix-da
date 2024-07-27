@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./sddm.nix
     ./locale.nix
     ./networking.nix
     ./fonts.nix

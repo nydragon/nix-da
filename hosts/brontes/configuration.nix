@@ -19,18 +19,9 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+
   services.blueman.enable = true;
   services.flatpak.enable = true;
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.greetd.greetd}/bin/agreety --cmd ${pkgs.hyprland}/bin/hyprland";
-        user = "${username}";
-      };
-      default_session = initial_session;
-    };
-  };
 
   #: Power Consumption {{{
   services.logind = {
