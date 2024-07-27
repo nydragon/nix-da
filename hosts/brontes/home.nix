@@ -58,6 +58,7 @@
         calibre
         alacritty
         tagger
+        soundconverter
 
         # proprietary
         obsidian

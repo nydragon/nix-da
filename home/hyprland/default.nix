@@ -136,6 +136,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
           "$mod, Return, exec, ${pkgs.foot}/bin/foot"
           #"$mod, S, exec, rofi -show clipboard -show-icons"
           "$mod SHIFT, Q, killactive,"
+          "$mod, V, togglefloating"
           "$mod SHIFT, P, exec, rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu"
           "$mod, P, exec, ${pkgs.cliphist}/bin/cliphist wipe & ${pkgs.hyprlock}/bin/hyprlock"
           "$mod SHIFT, C, exec, hyprctl reload"

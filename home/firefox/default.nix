@@ -22,7 +22,10 @@ lib.mkIf osConfig.programs.firefox.enable {
             "NixOS Packages" = {
               urls = [ { template = "https://search.nixos.org/packages?query={searchTerms}"; } ];
               icon = nixicon;
-              definedAliases = [ "@nixpkg" ];
+              definedAliases = [
+                "@nixpkg"
+                "@nixpkgs"
+              ];
             };
             "NixOS Wiki" = {
               urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
