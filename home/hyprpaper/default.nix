@@ -1,11 +1,11 @@
+{ self, ... }:
 {
   services.hyprpaper = {
     enable = true;
     settings =
       let
-        wp = ./wallpaper.jpg;
+        wp = "${self}/assets/wallpapers/nix-flake-pastel.jpg";
       in
-
       {
         ipc = "on";
         preload = [ "${wp}" ];
