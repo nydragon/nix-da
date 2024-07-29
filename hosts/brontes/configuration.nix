@@ -47,6 +47,7 @@
   };
 
   programs = {
+    dconf.enable = true;
     steam.enable = true;
     fish.enable = true;
     firefox.enable = true;
