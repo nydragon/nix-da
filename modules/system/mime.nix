@@ -12,8 +12,8 @@
         "application/pdf" = browser;
         "x-www-browser" = browser;
         "text/html" = browser;
-        "application/vnd.comicbook+zip" = "calibre-ebook-viewer.desktop";
-        "application/epub+zip" = "calibre-ebook-viewer.desktop";
+        "application/vnd.comicbook+zip" = "com.github.johnfactotum.Foliate.desktop";
+        "application/epub+zip" = "com.github.johnfactotum.Foliate.desktop";
         "image/*" = "org.gnome.Loupe.desktop";
         "image/png" = "org.gnome.Loupe.desktop";
         "image/jpeg" = "org.gnome.Loupe.desktop";

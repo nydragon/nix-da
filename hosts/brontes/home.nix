@@ -59,6 +59,8 @@
         alacritty
         tagger
         soundconverter
+        foliate
+        kid3
 
         # proprietary
         obsidian
