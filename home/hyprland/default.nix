@@ -20,7 +20,6 @@ lib.mkIf osConfig.programs.hyprland.enable {
       ];
 
       exec-once = [
-        "${pkgs.hyprpaper}/bin/hyprpaper"
         "${pkgs.swaynotificationcenter}/bin/swaync"
         "${pkgs.nextcloud-client}/bin/nextcloud --background"
         "${pkgs.kdeconnect}/bin/kdeconnect-indicator"
