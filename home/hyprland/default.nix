@@ -28,7 +28,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
         # keepassxc ignores themeing and doesnt show up in system tray otherwise
         # Dirty solution but hey
         "sleep 3 && ${pkgs.keepassxc}/bin/keepassxc"
-        "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store -max-items 10"
+        #"${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store -max-items 10"
         (lib.mkIf config.services.hypridle.enable "${pkgs.hypridle}/bin/hypridle")
       ];
 
@@ -116,15 +116,15 @@ lib.mkIf osConfig.programs.hyprland.enable {
 
       # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
       dwindle = {
-        pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-        preserve_split = true; # You probably want this
+        pseudotile = true;
+        preserve_split = true;
       };
 
       # https://wiki.hyprland.org/Configuring/Variables/#misc
       misc = {
-        force_default_wallpaper = 0; # Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo = false; # If true disables the random hyprland logo / anime girl background. :(
-        focus_on_activate = true;
+        force_default_wallpaper = 0;
+        disable_hyprland_logo = false;
+        focus_on_activate = false; # Open windows without focusing them
       };
 
       bindm = [ "$mod,mouse:272,movewindow" ];
