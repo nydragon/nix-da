@@ -1,5 +1,4 @@
 # This file contains default settings used across different systems
-{ lib, ... }:
 {
   imports = [
     ./ssh
