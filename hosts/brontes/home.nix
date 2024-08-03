@@ -7,11 +7,6 @@
 {
   home-manager.users.${username} = {
     imports = [
-      ../../home/firefox
-      ../../home/fish
-      ../../home/neovim
-      ../../home/thunderbird
-      ../../home/git
       ../../home/rofi
       ../../home/swaync
       ../../home/waybar
@@ -25,8 +20,6 @@
       enable = true;
       nix-direnv.enable = true;
     };
-
-    programs.vscode.enable = true;
 
     services.blueman-applet.enable = true;
 
@@ -51,7 +44,6 @@
         thunderbird
         keepassxc
         nautilus
-        lollypop
         protonmail-bridge-gui
         varia
         signal-desktop

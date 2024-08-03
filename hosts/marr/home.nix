@@ -7,13 +7,8 @@
 {
   home-manager.users.${username} = {
     imports = [
-      ../../home/firefox
-      ../../home/fish
       ../../home/sway
-      ../../home/neovim
       ../../home/rofi
-      ../../home/thunderbird
-      ../../home/git
       ../../home/themes/catppuccin.nix
       ../../home
     ];
@@ -49,7 +44,6 @@
         thunderbird
         keepassxc
         nautilus
-        lollypop
         protonmail-bridge-gui
         varia
         signal-desktop
