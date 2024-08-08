@@ -137,17 +137,6 @@
     };
   };
 
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.greetd.greetd}/bin/agreety --cmd ${pkgs.sway}/bin/sway";
-        user = "${username}";
-      };
-      default_session = initial_session;
-    };
-  };
-
   services.gnome.gnome-keyring.enable = true;
 
   services.flatpak.enable = true;
