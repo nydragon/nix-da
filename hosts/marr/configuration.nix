@@ -149,6 +149,7 @@
   };
 
   services.gnome.gnome-keyring.enable = true;
+
   services.flatpak.enable = true;
 
   environment.variables = {
@@ -157,13 +158,6 @@
   };
 
   security.polkit.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

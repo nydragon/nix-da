@@ -16,6 +16,7 @@
     ./home-manager.nix
     ./system/mime.nix
     ./env.nix
-    ./printing.nix
+    ./system/printing.nix
+    ./system/audio.nix
   ];
 }
