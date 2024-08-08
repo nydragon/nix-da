@@ -28,7 +28,6 @@ lib.mkIf osConfig.programs.hyprland.enable {
         # keepassxc ignores themeing and doesnt show up in system tray otherwise
         # Dirty solution but hey
         "sleep 3 && ${pkgs.keepassxc}/bin/keepassxc"
-        #"${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store -max-items 10"
         (lib.mkIf config.services.hypridle.enable "${pkgs.hypridle}/bin/hypridle")
       ];
 
@@ -82,18 +81,24 @@ lib.mkIf osConfig.programs.hyprland.enable {
           mkRegexList = list: "^(${(lib.strings.concatStringsSep "|" list)})$";
         in
         [
-          "float,initialClass:(${
+          "float,initialClass:${
             mkRegexList [
               "com.nextcloud.desktopclient.nextcloud"
               "soffice"
               "xdg-desktop-portal-gtk"
             ]
-          })"
+          }"
           "bordercolor rgb(e50000) rgb(ff8d00) rgb(ffee00) rgb(028121) rgb(004cff) rgb(770088), fullscreen:1"
-          "workspace 2,initialClass:(${mkRegexList [ "firefox" ]})"
-          "workspace 3,initialClass:(${mkRegexList [ "obsidian" ]})"
-          "workspace 4,initialClass:(${mkRegexList [ "discord" ]})"
-          "workspace 5,initialClass:(${mkRegexList [ "lollypop" ]})"
+          "focusonactivate, title:${mkRegexList [ "Firefox" ]}"
+          "workspace 2,initialClass:${mkRegexList [ "firefox" ]}"
+          "workspace 3,initialClass:${mkRegexList [ "obsidian" ]}"
+          "workspace 4,initialClass:${mkRegexList [ "discord" ]}"
+          "workspace 5,initialClass:${mkRegexList [ "lollypop" ]}"
+
+          # Fixes: Nextcloud Client having a variable size depending on open tiled windows
+          "size 30% 50%, initialClass:com.nextcloud.desktopclient.nextcloud"
+          # Fixes: Nextcloud Client closing instantly because the cursor is not on the app
+          "noinitialfocus, initialClass:com.nextcloud.desktopclient.nextcloud"
         ];
       # https://wiki.hyprland.org/Configuring/Variables/#animations
       animations = {
@@ -124,17 +129,16 @@ lib.mkIf osConfig.programs.hyprland.enable {
       misc = {
         force_default_wallpaper = 0;
         disable_hyprland_logo = false;
-        focus_on_activate = false; # Open windows without focusing them
+        focus_on_activate = true; # Open windows without focusing them
       };
 
       bindm = [ "$mod,mouse:272,movewindow" ];
 
       bind =
         [
-          "$mod, D, exec, rofi -config ${config.home.homeDirectory}/.config/rofi/config.rasi -show combi -automatic-save-to-history"
+          "$mod, D, exec, ${pkgs.fuzzel}/bin/fuzzel"
           "$mod, E, exec, ${pkgs.nautilus}/bin/nautilus"
           "$mod, Return, exec, ${pkgs.foot}/bin/foot"
-          #"$mod, S, exec, rofi -show clipboard -show-icons"
           "$mod SHIFT, Q, killactive,"
           "$mod, V, togglefloating"
           "$mod SHIFT, P, exec, rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu"

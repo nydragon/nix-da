@@ -4,5 +4,6 @@
     ./thunderbird
     ./vscode
     ./lollypop
+    ./fuzzel.nix
   ];
 }
