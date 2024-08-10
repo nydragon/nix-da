@@ -129,7 +129,8 @@ lib.mkIf osConfig.programs.hyprland.enable {
       misc = {
         force_default_wallpaper = 0;
         disable_hyprland_logo = false;
-        focus_on_activate = true; # Open windows without focusing them
+        focus_on_activate = false; # Open windows without focusing them
+        new_window_takes_over_fullscreen = 2; # When a new window opens, the current fullscreen window returns to its tiled state
       };
 
       bindm = [ "$mod,mouse:272,movewindow" ];
