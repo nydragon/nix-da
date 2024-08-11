@@ -72,6 +72,7 @@
         wl-clipboard
 
         custom.scripts.nixedit
+        custom.scripts.set-background
       ];
     };
   };

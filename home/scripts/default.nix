@@ -19,14 +19,24 @@
       '';
     };
 
-  set-background = pkgs.writers.writeFishBin "set-background" (
-    builtins.readFile (
-      pkgs.fetchurl {
-        url = "https://codeberg.org/Nydragon/scripts/raw/commit/bb7a40545fa5cfce177cdac009d9f46f4823d360/set_background.fish";
-        hash = "sha256-Qoz5nn0tqV6QtsXv9fsOkf3PafL30iO/eIkh8ro6O+c=";
-      }
-    )
-  );
+  set-background = pkgs.writers.writeFishBin "set-background" ''
+    argparse 'f/file=!test -e "$_flag_value"' -- $argv; or return
+
+    set pids $(pidof swaybg)
+
+    if set -q _flag_file
+      ${pkgs.swaybg}/bin/swaybg -i "$(find $_flag_file | shuf -n 1)" > /dev/null 2>&1 &
+    else
+      ${pkgs.swaybg}/bin/swaybg -i "$(find ~/Pictures/backgrounds | shuf -n 1)" > /dev/null 2>&1 &
+    end
+
+    sleep 0.5;
+
+    for i in $(string split " " $pids)
+      echo "killing process $i";
+      kill -9 "$i";
+    end
+  '';
 
   nixedit = pkgs.writers.writeFishBin "nixedit" "env --chdir ~/.nixconf $EDITOR .";
 
