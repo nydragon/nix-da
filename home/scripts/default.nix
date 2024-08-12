@@ -41,4 +41,6 @@
   nixedit = pkgs.writers.writeFishBin "nixedit" "env --chdir ~/.nixconf $EDITOR .";
 
   getext = pkgs.writeScriptBin "ls | grep -E \"\.[a-zA-Z0-9]+$\" --only-matching  | sort | uniq";
+
+  fishl = pkgs.writers.writeFishBin "fishl" ./logo.fish;
 }

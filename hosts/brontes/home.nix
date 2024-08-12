@@ -73,6 +73,7 @@
 
         custom.scripts.nixedit
         custom.scripts.set-background
+        custom.scripts.fishl
       ];
     };
   };
