@@ -95,6 +95,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
           "workspace 4,initialClass:${mkRegexList [ "discord" ]}"
           "workspace 5,initialClass:${mkRegexList [ "lollypop" ]}"
 
+          "fullscreen, class:gamescope"
           # Fixes: Nextcloud Client having a variable size depending on open tiled windows
           "size 30% 50%, initialClass:com.nextcloud.desktopclient.nextcloud"
           # Fixes: Nextcloud Client closing instantly because the cursor is not on the app

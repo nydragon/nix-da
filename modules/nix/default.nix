@@ -3,7 +3,7 @@
 
   imports = [
     ./nixpkgs.nix
-    ./overlays
+    ./overlays.nix
   ];
 
   nix = {
