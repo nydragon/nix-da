@@ -1,7 +1,12 @@
-{ self, pkgs, ... }:
 {
+  self,
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+lib.mkIf config.services.displayManager.sddm.enable {
   services.displayManager.sddm = {
-    enable = true;
     wayland.enable = true;
     autoNumlock = true;
     theme = "catppuccin-mocha";

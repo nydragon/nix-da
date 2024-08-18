@@ -38,6 +38,8 @@
     ];
   };
 
+  services.displayManager.sddm.enable = true;
+
   services.dbus.enable = true;
 
   programs = {
