@@ -8,7 +8,6 @@
   home-manager.users.${username} = {
     imports = [
       ../../home/sway
-      ../../home/rofi
       ../../home/themes/catppuccin.nix
       ../../home
     ];
@@ -28,6 +27,9 @@
       nix-direnv.enable = true;
     };
 
+    programs = {
+      rofi.enable = true;
+    };
     home = {
       stateVersion = config.system.stateVersion;
       inherit username;

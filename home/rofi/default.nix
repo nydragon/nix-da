@@ -4,14 +4,13 @@
   lib,
   ...
 }:
-{
+lib.mkIf config.programs.rofi.enable {
   programs.rofi =
     let
       conf = "${config.home.homeDirectory}/.config/rofi";
     in
     rec {
       package = pkgs.rofi-wayland.override { inherit plugins; };
-      enable = true;
       plugins = [ pkgs.rofi-calc ];
       theme = "${conf}/themes/rounded-gray-dark.rasi";
       terminal = "${pkgs.alacritty}/bin/alacritty";

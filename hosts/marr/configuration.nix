@@ -36,6 +36,12 @@
     HibernateDelaySec=1200
   '';
 
+  specialisation = {
+    gpu.configuration = {
+      imports = [ inputs.nixos-hardware.nixosModules.dell-xps-15-9510-nvidia ];
+    };
+  };
+
   programs = {
     dconf.enable = true;
     steam.enable = true;
@@ -43,6 +49,16 @@
     firefox.enable = true;
     thunderbird.enable = true;
     sway.enable = true;
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd \"sway --unsupported-gpu\"";
+        user = "greeter";
+      };
+    };
   };
 
   services.printing.enable = true;

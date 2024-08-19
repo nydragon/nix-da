@@ -6,5 +6,6 @@
     ./foot.nix
     ./graphical
     ./terminal
+    ./rofi
   ];
 }
