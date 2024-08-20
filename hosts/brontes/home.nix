@@ -74,6 +74,10 @@
         custom.scripts.nixedit
         custom.scripts.set-background
         custom.scripts.fishl
+        custom.scripts.rpaste
+        custom.scripts.genswitch
+        custom.scripts.gentest
+
       ];
     };
   };

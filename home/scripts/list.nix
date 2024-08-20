@@ -1,8 +1,1 @@
-{ pkgs, ... }:
-with import ./. { inherit pkgs; };
-[
-  screenshot
-  set-background
-  nixedit
-  fishl
-]
+{ pkgs, ... }: builtins.attrValues (import ./. { inherit pkgs; })

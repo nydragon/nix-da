@@ -30,12 +30,6 @@
         end
       '';
       fish_prompt = builtins.readFile ./fish_prompt.fish;
-      rebuild = ''
-        env --chdir $HOME/.nixconf sudo nixos-rebuild switch --flake .#$(hostname) \
-        && ${lib.my.checkPath pkgs.libnotify "notify-send"} nixos-rebuild "Rebuild complete" \
-            -a nixos-rebuild \
-            -i ${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg
-      '';
       revert = ''
         env --chdir $HOME/.nixconf sudo nixos-rebuild switch --flake .#$(hostname) --rollback
       '';

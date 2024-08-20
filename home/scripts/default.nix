@@ -1,4 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+
+let
+  nixos-rebuild =
+    name: word:
+    pkgs.writers.writeBashBin name ''
+      env --chdir $HOME/.nixconf sudo nixos-rebuild ${word} --flake .#$(hostname) \
+          && ${lib.my.checkPath pkgs.libnotify "notify-send"} nixos-rebuild "Rebuild complete" \
+              -a nixos-rebuild \
+              -i ${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg
+    '';
+in
 {
   screenshot =
     with pkgs;
@@ -41,6 +52,12 @@
   nixedit = pkgs.writers.writeFishBin "nixedit" "env --chdir ~/.nixconf $EDITOR .";
 
   getext = pkgs.writeScriptBin "ls | grep -E \"\.[a-zA-Z0-9]+$\" --only-matching  | sort | uniq";
+
+  rpaste = pkgs.writers.writeBashBin "rpaste" ''curl -F "file=@$1" http://rusty.ccnlc.eu/'';
+
+  gentest = nixos-rebuild "gentest" "test";
+
+  genswitch = nixos-rebuild "genswitch" "switch";
 
   fishl = pkgs.writers.writeFishBin "fishl" ./logo.fish;
 }

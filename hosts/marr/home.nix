@@ -74,6 +74,9 @@
         custom.scripts.screenshot
         custom.scripts.nixedit
         custom.scripts.set-background
+        custom.scripts.rpaste
+        custom.scripts.genswitch
+        custom.scripts.gentest
       ];
     };
   };
