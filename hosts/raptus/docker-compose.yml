@@ -1,0 +1,28 @@
+services:
+  couchserver:
+    image: couchdb
+    container_name: obsidian-livesync
+    restart: always
+    ports:
+      - 5984:5984
+    environment:
+      - COUCHDB_USER=USERNAME
+      - COUCHDB_PASSWORD=PASSWORD
+    volumes:
+      - dbdata:/opt/couchdb/data
+      - ./local.ini:/opt/couchdb/etc/local.ini
+  rustypaste:
+    image: orhunp/rustypaste:${IMAGE_TAG:-latest}
+    build: .
+    container_name: rustypaste
+    restart: always
+    environment:
+      - RUST_LOG=debug
+    ports:
+      - "8000:8000"
+    volumes:
+      - rustypaste-data:/app/upload
+      - ./rusty.toml:/app/config.toml
+volumes:
+  dbdata:
+  rustypaste-data:

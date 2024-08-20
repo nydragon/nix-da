@@ -3,9 +3,9 @@ refresh_rate = "1s"
 
 [server]
 address = "127.0.0.1:8000"
-url = "https://vps.ccnlc.eu"
-#workers=4
-max_content_length = "10MB"
+url = "http://rusty.ccnlc.eu"
+workers = 4
+max_content_length = "50MB"
 upload_path = "./upload"
 timeout = "30s"
 expose_version = false
@@ -65,6 +65,6 @@ mime_blacklist = [
   "application/java-archive",
   "application/java-vm",
 ]
-duplicate_files = true
-# default_expiry = "1h"
+duplicate_files = false
+default_expiry = "1h"
 delete_expired_files = { enabled = true, interval = "1h" }

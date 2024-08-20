@@ -1,5 +1,10 @@
 # Auto-generated using compose2nix v0.2.2-pre.
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   # Runtime
@@ -17,12 +22,9 @@
   # Containers
   virtualisation.oci-containers.containers."obsidian-livesync" = {
     image = "couchdb";
-    environment = {
-      "COUCHDB_PASSWORD" = "";
-      "COUCHDB_USER" = "";
-    };
+    environmentFiles = [ config.age.secrets.couchdb.path ];
     volumes = [
-      "${./local.ini}:/opt/couchdb/etc/local.ini:ro"
+      "${./local.ini}:/opt/couchdb/etc/local.ini:rw"
       "test_dbdata:/opt/couchdb/data:rw"
     ];
     ports = [ "5984:5984/tcp" ];

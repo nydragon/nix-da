@@ -13,6 +13,8 @@
     ../../modules/nix
   ];
 
+  age.secrets.couchdb.file = ../../secrets/couchdb.age;
+
   device.type = {
     vm.enable = true;
     server.enable = true;
@@ -25,7 +27,11 @@
 
   networking.firewall = lib.mkForce {
     enable = true;
-    allowedTCPPorts = [ 80 ];
+    allowedTCPPorts = [
+      80
+      22
+      5984 # couchdb
+    ];
   };
 
   services.nginx = {
@@ -33,12 +39,10 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts."rusty.ccnlc.eu" = {
-      #enableACME = true;
-      #forceSSL = true;
+      # TODO: Enable https
 
       locations."/" = {
         proxyPass = "http://127.0.0.1:8000";
-        proxyWebsockets = true; # needed if you need to use WebSocket
         extraConfig = ''
           proxy_ssl_server_name on;
           proxy_pass_header Authorization;'';
