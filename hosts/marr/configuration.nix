@@ -14,6 +14,11 @@
     ./home.nix
   ];
 
+  device.type = {
+    graphical.enable = true;
+    workstation.enable = true;
+    gaming.enable = true;
+  };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
