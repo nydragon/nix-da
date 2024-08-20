@@ -61,6 +61,7 @@
           in
           lib.mkOptionDefault {
             "${mod}+p" = "exec ${pkgs.cliphist}/bin/cliphist wipe & ${pkgs.swaylock}/bin/swaylock";
+
             "${mod}+Shift+p" = "exec rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
             # Reload the config file
             "${mod}+Shift+c" = "reload";
@@ -69,7 +70,8 @@
             # Make focused window fullscreen
             "${mod}+f" = "fullscreen";
             # Start launcher
-            "${mod}+d" = "exec rofi -config ${homeDirectory}/.config/rofi/config.rasi -show combi -automatic-save-to-history | xargs swaymsg exec --";
+            #"${mod}+d" = "exec rofi -config ${homeDirectory}/.config/rofi/config.rasi -show combi -automatic-save-to-history | xargs swaymsg exec --";
+            "${mod}+d" = "exec ${pkgs.fuzzel}/bin/fuzzel";
             "${mod}+s" = "exec rofi -show clipboard -show-icons";
             # Toggle the current focus between tiling and floating mode
             "${mod}+Shift+space" = "floating toggle";
@@ -91,6 +93,8 @@
             "--locked XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
             "Print" = "exec ${pkgs.custom.scripts.screenshot}/bin/screenshot";
             "${mod}+u" = "exec ${pkgs.custom.scripts.screenshot}/bin/screenshot";
+            "${mod}+Shift+u" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.swappy}/bin/swappy -f -";
+
             #: Workspace movement {{{
             "--input-device=${inputs.kb.builtin} ${mod}+ampersand" = "workspace number 1";
             "--input-device=${inputs.kb.builtin} ${mod}+eacute" = "workspace number 2";
