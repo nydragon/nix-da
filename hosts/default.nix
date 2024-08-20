@@ -19,5 +19,11 @@ in
       system = "x86_64-linux";
       extraModules = [ inputs.disko.nixosModules.disko ];
     };
+
+    raptus = lib.my.mkSystem {
+      hostname = "raptus";
+      system = "x86_64-linux";
+      extraModules = [ inputs.disko.nixosModules.disko ];
+    };
   };
 }

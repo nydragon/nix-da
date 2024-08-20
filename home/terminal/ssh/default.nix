@@ -13,6 +13,11 @@
         user = "nydragon";
         port = 22;
       };
+      vps = {
+        hostname = "vps.ccnlc.eu";
+        user = "root";
+        port = 22;
+      };
     };
   };
 }
