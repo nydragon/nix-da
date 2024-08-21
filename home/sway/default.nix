@@ -91,8 +91,8 @@
             "--locked XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
             "--locked XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
             "--locked XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
-            "Print" = "exec ${pkgs.custom.scripts.screenshot}/bin/screenshot";
-            "${mod}+u" = "exec ${pkgs.custom.scripts.screenshot}/bin/screenshot";
+            "Print" = "exec ${pkgs.scripts.screenshot}/bin/screenshot";
+            "${mod}+u" = "exec ${pkgs.scripts.screenshot}/bin/screenshot";
             "${mod}+Shift+u" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.swappy}/bin/swappy -f -";
 
             #: Workspace movement {{{
@@ -127,7 +127,7 @@
           { command = "${pkgs.kdeconnect}/bin/kdeconnect-indicator"; }
           { command = "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window"; }
           {
-            command = "${pkgs.custom.scripts.set-background}/bin/set-background -f ${wallpaper}";
+            command = "${pkgs.scripts.set-background}/bin/set-background -f ${wallpaper}";
             always = true;
           }
           {

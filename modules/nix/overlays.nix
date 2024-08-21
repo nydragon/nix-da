@@ -1,4 +1,10 @@
 {
+  inputs,
+  config,
+  lib,
+  ...
+}:
+{
   nixpkgs.overlays = [
     # Add env vars to calibre so they may get propagated to a plugin that needs them
     (final: prev: {
@@ -17,6 +23,17 @@
         #lastFMSupport = false;
         youtubeSupport = false;
       };
+    })
+
+    (final: prev: {
+      scripts = import ../../home/scripts {
+        inherit lib config;
+        pkgs = prev.pkgs;
+      };
+    })
+
+    (final: prev: {
+      rofi-obsidian = inputs.rofi-obsidian.outputs.packages.${prev.pkgs.system}.rofi-obsidian;
     })
   ];
 }

@@ -24,7 +24,7 @@ lib.mkIf config.programs.rofi.enable {
           # WARNING: ABI version mismatch
           # "calc"
           "clipboard:${lib.my.checkPath pkgs.cliphist "cliphist-rofi-img"}"
-          "obsidian:${lib.my.checkPath pkgs.custom.rofi-obsidian "rofi-obsidian"}"
+          "obsidian:${lib.my.checkPath pkgs.rofi-obsidian "rofi-obsidian"}"
         ];
         matching = "fuzzy";
         sort = true;

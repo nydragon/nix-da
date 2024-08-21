@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 let
   nixos-rebuild =
@@ -53,7 +58,10 @@ in
 
   getext = pkgs.writeScriptBin "ls | grep -E \"\.[a-zA-Z0-9]+$\" --only-matching  | sort | uniq";
 
-  rpaste = pkgs.writers.writeBashBin "rpaste" ''curl -F "file=@$1" http://rusty.ccnlc.eu/'';
+  rpaste = pkgs.writers.writeBashBin "rpaste" ''
+    export $(cat ${config.age.secrets.rustypaste.path} | xargs)
+    curl -F "file=@$1" -H "Authorization: $AUTH_TOKEN" http://rusty.ccnlc.eu/
+  '';
 
   gentest = nixos-rebuild "gentest" "test";
 

@@ -71,12 +71,12 @@
         ripgrep
         wl-clipboard
 
-        custom.scripts.nixedit
-        custom.scripts.set-background
-        custom.scripts.fishl
-        custom.scripts.rpaste
-        custom.scripts.genswitch
-        custom.scripts.gentest
+        scripts.nixedit
+        scripts.set-background
+        scripts.fishl
+        scripts.rpaste
+        scripts.genswitch
+        scripts.gentest
 
       ];
     };

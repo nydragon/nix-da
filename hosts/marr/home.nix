@@ -71,12 +71,12 @@
         swaybg
         wl-clipboard
 
-        custom.scripts.screenshot
-        custom.scripts.nixedit
-        custom.scripts.set-background
-        custom.scripts.rpaste
-        custom.scripts.genswitch
-        custom.scripts.gentest
+        scripts.screenshot
+        scripts.nixedit
+        scripts.set-background
+        scripts.rpaste
+        scripts.genswitch
+        scripts.gentest
       ];
     };
   };
