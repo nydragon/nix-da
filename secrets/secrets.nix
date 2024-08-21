@@ -12,5 +12,6 @@ let
   systems = [ raptus ];
 in
 {
-  "couchdb.age".publicKeys = [ raptus ] ++ users;
+  "couchdb.age".publicKeys = [ raptus ];
+  "rustypaste.age".publicKeys = [ raptus ] ++ users;
 }
