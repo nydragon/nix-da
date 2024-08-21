@@ -60,4 +60,12 @@ in
   genswitch = nixos-rebuild "genswitch" "switch";
 
   fishl = pkgs.writers.writeFishBin "fishl" ./logo.fish;
+
+  nrun = pkgs.writers.writeFishBin "nrun" ''
+    if echo $argv[1] | grep -Eq '^(github):.+/.+$'
+        nix run $argv[1] -- $argv[2..]
+    else
+        nix run nixpkgs#$argv[1] -- $argv[2..]
+    end
+  '';
 }
