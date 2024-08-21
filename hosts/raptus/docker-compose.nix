@@ -55,7 +55,9 @@
       "RUST_LOG" = "debug";
     };
     volumes = [
-      "${./rusty.toml}:/app/config.toml:ro"
+      "${
+        (pkgs.formats.toml { }).generate "conf" (import ./rustypaste.nix { inherit config; })
+      }:/app/config.toml:ro"
       "test_rustypaste-data:/app/upload:rw"
     ];
     ports = [ "8000:8000/tcp" ];

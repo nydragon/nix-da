@@ -1,33 +1,34 @@
-{ lib, config, ... }:
+{ lib, ... }:
 {
   options = {
     device = {
       type = {
-        gaming.enable = lib.mkOption {
+        gaming.enable = lib.mkEnableOption {
           type = lib.types.bool;
           default = false;
         };
 
-        graphical.enable = lib.mkOption {
+        graphical.enable = lib.mkEnableOption {
           type = lib.types.bool;
           default = false;
         };
 
-        workstation.enable = lib.mkOption {
+        workstation.enable = lib.mkEnableOption {
           type = lib.types.bool;
           default = false;
         };
 
-        server.enable = lib.mkOption {
+        server.enable = lib.mkEnableOption {
           type = lib.types.bool;
           default = false;
         };
 
-        vm.enable = lib.mkOption {
+        vm.enable = lib.mkEnableOption {
           type = lib.types.bool;
           default = false;
         };
       };
     };
   };
+
 }

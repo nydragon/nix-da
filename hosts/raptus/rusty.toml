@@ -10,10 +10,7 @@ upload_path = "./upload"
 timeout = "30s"
 expose_version = false
 expose_list = false
-#auth_tokens = [
-#  "super_secret_token1",
-#  "super_secret_token2",
-#]
+auth_tokens = ["super_secret_token1", "super_secret_token2"]
 #delete_tokens = [
 #  "super_secret_token1",
 #  "super_secret_token3",
