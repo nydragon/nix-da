@@ -75,6 +75,7 @@
         scripts.nixedit
         scripts.set-background
         scripts.rpaste
+        scripts.nrun
         scripts.genswitch
         scripts.gentest
       ];

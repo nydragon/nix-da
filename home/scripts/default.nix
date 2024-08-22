@@ -60,7 +60,7 @@ in
 
   rpaste = pkgs.writers.writeBashBin "rpaste" ''
     export $(cat ${config.age.secrets.rustypaste.path} | xargs)
-    curl -F "file=@$1" -H "Authorization: $AUTH_TOKEN" http://rusty.ccnlc.eu/
+    curl -F "file=@$1" -H "Authorization: $AUTH_TOKEN" https://rusty.ccnlc.eu/
   '';
 
   gentest = nixos-rebuild "gentest" "test";

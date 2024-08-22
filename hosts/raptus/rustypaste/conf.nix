@@ -1,11 +1,10 @@
-{ config, ... }:
 {
   config = {
     refresh_rate = "1s";
   };
   server = {
     address = "127.0.0.1:8000";
-    url = "http://rusty.ccnlc.eu";
+    url = "https://rusty.ccnlc.eu";
     workers = 4;
     max_content_length = "50MB";
     upload_path = "./upload";

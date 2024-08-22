@@ -74,6 +74,7 @@
         scripts.nixedit
         scripts.set-background
         scripts.fishl
+        scripts.nrun
         scripts.rpaste
         scripts.genswitch
         scripts.gentest

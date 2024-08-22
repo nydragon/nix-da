@@ -7,11 +7,13 @@ in
     marr = lib.my.mkSystem {
       hostname = "marr";
       system = "x86_64-linux";
+      extraModules = [ inputs.agenix.nixosModules.default ];
     };
 
     brontes = lib.my.mkSystem {
       hostname = "brontes";
       system = "x86_64-linux";
+      extraModules = [ inputs.agenix.nixosModules.default ];
     };
 
     styrak = lib.my.mkSystem {

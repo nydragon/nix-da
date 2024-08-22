@@ -1,15 +1,25 @@
 { lib, ... }:
+let
+  inherit (lib.types) bool array string;
+
+in
+
 {
   options = {
     device = {
+      pubKeys = lib.mkOption {
+        type = array string;
+        default = [ ];
+      };
+
       type = {
         gaming.enable = lib.mkEnableOption {
-          type = lib.types.bool;
+          type = bool;
           default = false;
         };
 
         graphical.enable = lib.mkEnableOption {
-          type = lib.types.bool;
+          type = bool;
           default = false;
         };
 
