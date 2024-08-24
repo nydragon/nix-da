@@ -47,7 +47,7 @@
     };
   };
 
-  age.identityPaths = [ "/home/nico/.ssh/id_ed25519" ];
+  age.identityPaths = [ "/home/ny/.ssh/id_ed25519" ];
 
   programs = {
     dconf.enable = true;

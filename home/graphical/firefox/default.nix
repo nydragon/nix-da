@@ -9,8 +9,8 @@ lib.mkIf osConfig.programs.firefox.enable {
     enable = true;
     # Installed by nixpkgs module
     package = null;
-    profiles.nico = {
-      name = "Nico";
+    profiles.ny = {
+      name = "ny";
       isDefault = true;
       search = {
         default = "DuckDuckGo";

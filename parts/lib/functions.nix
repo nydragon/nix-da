@@ -30,7 +30,7 @@
       ] ++ extraModules;
       specialArgs = {
         inherit inputs self;
-        username = "nico";
+        username = "ny";
       };
     };
 }

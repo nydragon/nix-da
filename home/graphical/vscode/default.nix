@@ -15,7 +15,7 @@ lib.mkIf config.programs.vscode.enable {
     ];
     userSettings = {
       "update.mode" = "none";
-      "idf.espIdfPath" = "/home/nico/esp/v5.2.2/esp-idf";
+      "idf.espIdfPath" = "/home/ny/esp/v5.2.2/esp-idf";
     };
   };
 }

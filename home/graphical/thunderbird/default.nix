@@ -29,7 +29,7 @@
       # 35 = Received
       "mailnews.default_sort_type" = 18;
     };
-    profiles.nico = {
+    profiles.ny = {
       isDefault = true;
     };
   };
