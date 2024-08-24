@@ -5,5 +5,6 @@
     ./git
     ./fish
     ./btop.nix
+    ./hyfetch.nix
   ];
 }
