@@ -16,6 +16,7 @@ in
     ./disk-config.nix
     ./container-root.nix
     ./rustypaste
+    ./forgejo
     ./obsidian-livesync
     ../../modules/nix
   ];
@@ -41,6 +42,7 @@ in
       22
       443
       5984 # couchdb
+      3000 # forgejo
     ];
   };
 
@@ -69,17 +71,26 @@ in
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     clientMaxBodySize = "50M";
-    virtualHosts."rusty.ccnlc.eu" = {
-      enableACME = true;
-      forceSSL = true;
-
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:8000";
-        extraConfig = ''
-          proxy_ssl_server_name on;
-          proxy_pass_header Authorization;'';
-      };
-    };
+    virtualHosts =
+      let
+        mkVHost = name: port: {
+          inherit name;
+          value = {
+            enableACME = true;
+            forceSSL = true;
+            locations."/" = {
+              proxyPass = "http://127.0.0.1:${toString port}";
+              extraConfig = ''
+                proxy_ssl_server_name on;
+                proxy_pass_header Authorization;'';
+            };
+          };
+        };
+      in
+      builtins.listToAttrs [
+        (mkVHost "rusty.ccnlc.eu" 8000)
+        (mkVHost "git.ccnlc.eu" 3000)
+      ];
   };
 
   services.openssh.enable = true;
