@@ -79,15 +79,14 @@ lib.mkIf osConfig.programs.hyprland.enable {
       windowrulev2 =
         let
           mkRegexList = list: "^(${(lib.strings.concatStringsSep "|" list)})$";
+          floatReg = mkRegexList [
+            "com.nextcloud.desktopclient.nextcloud"
+            "soffice"
+            "xdg-desktop-portal-gtk"
+          ];
         in
         [
-          "float,initialClass:${
-            mkRegexList [
-              "com.nextcloud.desktopclient.nextcloud"
-              "soffice"
-              "xdg-desktop-portal-gtk"
-            ]
-          }"
+          "float,initialClass:${floatReg}"
           "bordercolor rgb(e50000) rgb(ff8d00) rgb(ffee00) rgb(028121) rgb(004cff) rgb(770088), fullscreen:1"
           "focusonactivate, title:${mkRegexList [ "Firefox" ]}"
           "workspace 2,initialClass:${mkRegexList [ "firefox" ]}"
@@ -158,7 +157,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
           "$mod, F, fullscreen, 0"
           "$mod, N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
           "$mod, U, exec, ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot -o ~/Pictures/screenshots -m region"
-          "$mod SHIFT, U, exec, ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot --raw -m region | ${pkgs.swappy}/bin/swappy -f -"
+          "$mod SHIFT, U, exec, ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot --raw -m region | ${pkgs.satty}/bin/satty -f - --fullscreen"
 
           #: Brightness and Media {{{
           ",XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl s +10%"

@@ -93,7 +93,7 @@
             "--locked XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
             "Print" = "exec ${pkgs.scripts.screenshot}/bin/screenshot";
             "${mod}+u" = "exec ${pkgs.scripts.screenshot}/bin/screenshot";
-            "${mod}+Shift+u" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.swappy}/bin/swappy -f -";
+            "${mod}+Shift+u" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.satty}/bin/satty -f - --fullscreen";
 
             #: Workspace movement {{{
             "--input-device=${inputs.kb.builtin} ${mod}+ampersand" = "workspace number 1";

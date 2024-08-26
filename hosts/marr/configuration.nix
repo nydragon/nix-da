@@ -123,21 +123,7 @@
 
   services.dbus.enable = true;
 
-  xdg.portal = {
-    enable = true;
-    wlr = {
-      settings = {
-        screencast = {
-          chooser_type = "simple";
-          chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
-        };
-      };
-      enable = true;
-    };
-    config.common.default = "*";
-    # gtk portal needed to make gtk apps happy
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
+  xdg.portal.enable = true;
 
   services.gvfs.enable = true;
 

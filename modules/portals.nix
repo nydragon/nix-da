@@ -4,11 +4,11 @@
   pkgs,
   ...
 }:
-lib.mkIf config.xdg.portal.enabme {
+lib.mkIf config.xdg.portal.enable {
   xdg.portal = {
     config = {
       sway = {
-        "org.freedesktop.impl.portal.Screenshot.PickColor" = [ "hyprpicker" ];
+        "org.freedesktop.impl.portal.Screenshot.PickColor" = [ "${pkgs.hyprpicker}/bin/hyprpicker" ];
       };
       common.default = "*";
     };
@@ -19,5 +19,4 @@ lib.mkIf config.xdg.portal.enabme {
       xdg-desktop-portal-hyprland
     ];
   };
-
 }

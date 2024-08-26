@@ -19,5 +19,6 @@
     ./system/printing.nix
     ./system/audio.nix
     ./secrets.nix
+    ./portals.nix
   ];
 }

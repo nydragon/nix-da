@@ -29,14 +29,7 @@
   };
   #: }}}
 
-  xdg.portal = {
-    enable = true;
-    config.common.default = "*";
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
-    ];
-  };
+  xdg.portal.enable = true;
 
   services.displayManager.sddm.enable = true;
 
