@@ -78,6 +78,7 @@
         scripts.nrun
         scripts.genswitch
         scripts.gentest
+        scripts.editsym
       ];
     };
   };

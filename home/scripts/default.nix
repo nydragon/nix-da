@@ -4,8 +4,8 @@
   config,
   ...
 }:
-
 let
+  inherit (pkgs.writers) writeFishBin writeBashBin;
   nixos-rebuild =
     name: word:
     pkgs.writers.writeBashBin name ''
@@ -35,7 +35,7 @@ in
       '';
     };
 
-  set-background = pkgs.writers.writeFishBin "set-background" ''
+  set-background = writeFishBin "set-background" ''
     argparse 'f/file=!test -e "$_flag_value"' -- $argv; or return
 
     set pids $(pidof swaybg)
@@ -54,11 +54,11 @@ in
     end
   '';
 
-  nixedit = pkgs.writers.writeFishBin "nixedit" "env --chdir ~/.nixconf $EDITOR .";
+  nixedit = writeFishBin "nixedit" "env --chdir ~/.nixconf $EDITOR .";
 
   getext = pkgs.writeScriptBin "ls | grep -E \"\.[a-zA-Z0-9]+$\" --only-matching  | sort | uniq";
 
-  rpaste = pkgs.writers.writeBashBin "rpaste" ''
+  rpaste = writeBashBin "rpaste" ''
     export $(cat ${config.age.secrets.rustypaste.path} | xargs)
     curl -F "file=@$1" -H "Authorization: $AUTH_TOKEN" https://rusty.ccnlc.eu/
   '';
@@ -67,13 +67,22 @@ in
 
   genswitch = nixos-rebuild "genswitch" "switch";
 
-  fishl = pkgs.writers.writeFishBin "fishl" ./logo.fish;
+  fishl = writeFishBin "fishl" ./logo.fish;
 
-  nrun = pkgs.writers.writeFishBin "nrun" ''
+  nrun = writeFishBin "nrun" ''
     if echo $argv[1] | grep -Eq '^(github):.+/.+$'
         nix run $argv[1] -- $argv[2..]
     else
         nix run nixpkgs#$argv[1] -- $argv[2..]
+    end
+  '';
+
+  editsym = writeFishBin "editsym" ''
+    for file in $argv
+        cp "$file" "$file.tmp"
+        unlink "$file"
+        mv "$file.tmp" "$file"
+        chmod -R 777 "$file"
     end
   '';
 }

@@ -78,7 +78,7 @@
         scripts.rpaste
         scripts.genswitch
         scripts.gentest
-
+        scripts.editsym
       ];
     };
   };
