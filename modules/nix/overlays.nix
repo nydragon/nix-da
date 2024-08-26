@@ -35,5 +35,7 @@
     (final: prev: {
       rofi-obsidian = inputs.rofi-obsidian.outputs.packages.${prev.pkgs.system}.rofi-obsidian;
     })
+
+    (final: prev: { nysh = inputs.nysh.defaultPackage.${prev.pkgs.system}; })
   ];
 }

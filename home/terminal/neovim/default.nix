@@ -8,6 +8,8 @@
     withPython3 = false;
     withRuby = false;
     extraPackages = with pkgs; [
+      lua
+
       # Language Servers
       rust-analyzer
       nixd
@@ -17,6 +19,8 @@
       zls
       typescript
       nodePackages_latest.typescript-language-server
+
+      kdePackages.qtdeclarative # QML formatter
 
       # Formatter
       python311Packages.black # Python formatter

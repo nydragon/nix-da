@@ -27,6 +27,11 @@
       url = "github:nydragon/rofi-obsidian";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nysh = {
+      url = "github:nydragon/nysh";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

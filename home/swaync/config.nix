@@ -29,50 +29,6 @@
   timeout-low = 5;
   transition-time = 200;
   widget-config = {
-    #"buttons-grid" = {
-    #actions = [
-    #{
-    #command = "systemctl poweroff";
-    #label = "󰐥";
-    #}
-    #{
-    #command = "systemctl reboot";
-    #label = "󰜉";
-    #}
-    #{
-    #command = "swaylock";
-    #label = "󰌾";
-    #}
-    #{
-    #command = "swaymsg exit";
-    #label = "󰍃";
-    #}
-    #{
-    #command = "systemctl suspend";
-    #label = "󰏥";
-    #}
-    #{
-    #command = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
-    #label = "󰕾";
-    #}
-    #{
-    #command = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
-    #label = "󰍬";
-    #}
-    #{
-    #command = "nmtui";
-    #label = "󰖩";
-    #}
-    #{
-    #command = "blueman-manager";
-    #label = "󰂯";
-    #}
-    #{
-    #command = "kooha";
-    #label = "";
-    #}
-    #];
-    #};
     backlight = {
       label = "󰃟";
     };

@@ -126,6 +126,7 @@
           { command = "${pkgs.nextcloud-client}/bin/nextcloud --background"; }
           { command = "${pkgs.kdeconnect}/bin/kdeconnect-indicator"; }
           { command = "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window"; }
+          { command = "${pkgs.nysh}/bin/nysh"; }
           {
             command = "${pkgs.scripts.set-background}/bin/set-background -f ${wallpaper}";
             always = true;
