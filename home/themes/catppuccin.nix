@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   validatePath =
     s: if (builtins.pathExists s) then (builtins.baseNameOf s) else throw "${s} does not exist";
@@ -28,8 +28,8 @@ rec {
         flavor = "frappe";
       };
     };
-    cursorTheme = with home.pointerCursor; {
-      inherit name package size;
+    cursorTheme = {
+      inherit (config.home.pointerCursor) name package size;
     };
   };
 
