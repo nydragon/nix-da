@@ -15,8 +15,8 @@ lib.mkIf osConfig.programs.hyprland.enable {
       "$mod" = "SUPER";
 
       monitor = [
-        "DP-2,1920x1080@144, 1920x0, 1"
-        "HDMI-A-1,1920x1080@60, 0x0, 1"
+        "DP-2,1920x1080@144, 0x0, 1"
+        "HDMI-A-1,1920x1080@60, 1920x0, 1"
       ];
 
       exec-once = [
