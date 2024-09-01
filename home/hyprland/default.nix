@@ -25,6 +25,8 @@ lib.mkIf osConfig.programs.hyprland.enable {
         "${pkgs.kdeconnect}/bin/kdeconnect-indicator"
         "${pkgs.protonmail-bridge-gui}/bin/protonmail-bridge-gui --no-window"
         "${pkgs.waybar}/bin/waybar"
+        "${pkgs.nysh}/bin/nysh"
+
         # keepassxc ignores themeing and doesnt show up in system tray otherwise
         # Dirty solution but hey
         "sleep 3 && ${pkgs.keepassxc}/bin/keepassxc"
@@ -142,7 +144,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
           "$mod, Return, exec, ${pkgs.foot}/bin/foot"
           "$mod SHIFT, Q, killactive,"
           "$mod, V, togglefloating"
-          "$mod SHIFT, P, exec, rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu"
+          "$mod SHIFT, P, exec, ${config.programs.rofi.package}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu"
           "$mod, P, exec, ${pkgs.cliphist}/bin/cliphist wipe & ${pkgs.hyprlock}/bin/hyprlock"
           "$mod SHIFT, C, exec, hyprctl reload"
           "$mod, left, movefocus, l"
