@@ -71,6 +71,8 @@
         ripgrep
         wl-clipboard
 
+        # custom
+        nysh
         scripts.nixedit
         scripts.set-background
         scripts.fishl

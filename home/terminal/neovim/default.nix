@@ -12,7 +12,8 @@
 
       # Language Servers
       rust-analyzer
-      nixd
+      #nixd
+      nil
       pyright
       bash-language-server
       lua-language-server

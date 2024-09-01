@@ -71,6 +71,8 @@
         swaybg
         wl-clipboard
 
+        # custom
+        nysh
         scripts.screenshot
         scripts.nixedit
         scripts.set-background
