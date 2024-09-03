@@ -215,11 +215,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1724796737,
-        "narHash": "sha256-SYW/fOirEjLoCbYGy5oHIYMqcFNj1gKMYzw1fITv4w0=",
+        "lastModified": 1724920408,
+        "narHash": "sha256-wDikoZmO2I634Wmeh6YddHfW/wadL/orDI+bXJtyDPY=",
         "owner": "nydragon",
         "repo": "nysh",
-        "rev": "d91add565552d876bd347ba3d88b9ad71329fc33",
+        "rev": "25f7c1ed6ccd0a952895216ab49bb8a032b12c39",
         "type": "github"
       },
       "original": {
