@@ -13,7 +13,7 @@ lib.mkIf config.programs.rofi.enable {
       package = pkgs.rofi-wayland.override { inherit plugins; };
       plugins = [ pkgs.rofi-calc ];
       theme = "${conf}/themes/rounded-gray-dark.rasi";
-      terminal = "${pkgs.alacritty}/bin/alacritty";
+      terminal = "${pkgs.foot}/bin/foot";
       extraConfig = {
         modes = [
           "combi"

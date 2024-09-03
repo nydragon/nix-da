@@ -16,7 +16,7 @@
   wayland.windowManager.sway =
     let
       homeDirectory = config.home.homeDirectory;
-      term = "${pkgs.alacritty}/bin/alacritty";
+      term = "${pkgs.foot}/bin/foot";
       filemanager = "${pkgs.nautilus}/bin/nautilus";
       colors = {
         lavender = "#babbf1";

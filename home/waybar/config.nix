@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   position = "top";
   layer = "bottom";
@@ -125,7 +126,7 @@
 
   network = {
     format-wifi = "{essid} ({signalStrength}%) ";
-    on-click = "alacritty -t nmtui -e nmtui";
+    on-click = "${pkgs.foot}/bin/foot -t nmtui -e nmtui";
   };
   privacy = {
     icon-size = 18;

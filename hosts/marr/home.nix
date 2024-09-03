@@ -28,6 +28,7 @@
     };
 
     programs = {
+      waybar.enable = true;
       rofi.enable = true;
     };
     home = {
@@ -50,6 +51,8 @@
         varia
         signal-desktop
         calibre
+        pulseview
+        foot
 
         # Proprietary
         postman

@@ -93,7 +93,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
           "focusonactivate, title:${mkRegexList [ "Firefox" ]}"
           "workspace 2,initialClass:${mkRegexList [ "firefox" ]}"
           "workspace 3,initialClass:${mkRegexList [ "obsidian" ]}"
-          "workspace 4,initialClass:${mkRegexList [ "discord" ]}"
+          "workspace 4,initialClass:${mkRegexList [ "steam" ]}"
           "workspace 5,initialClass:${mkRegexList [ "lollypop" ]}"
 
           "fullscreen, class:gamescope"
@@ -118,6 +118,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
           "borderangle, 1, 8, default"
           "fade, 1, 7, default"
           "workspaces, 1, 6, default"
+          "specialWorkspace, 1, 6, default, slidevert"
         ];
       };
 

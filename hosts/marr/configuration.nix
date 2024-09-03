@@ -166,7 +166,6 @@
     htop
     nextcloud-client
     kdeconnect
-    alacritty
     eza
     bat
     glib

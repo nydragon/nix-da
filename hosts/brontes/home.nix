@@ -21,6 +21,10 @@
       nix-direnv.enable = true;
     };
 
+    programs = {
+      waybar.enable = true;
+    };
+
     services.blueman-applet.enable = true;
 
     home = {
@@ -48,11 +52,12 @@
         varia
         signal-desktop
         calibre
-        alacritty
         tagger
         soundconverter
         foliate
         kid3
+        pulseview
+        prismlauncher
 
         # proprietary
         obsidian
