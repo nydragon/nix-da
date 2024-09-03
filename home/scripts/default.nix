@@ -70,7 +70,7 @@ in
   fishl = writeFishBin "fishl" ./logo.fish;
 
   nrun = writeFishBin "nrun" ''
-    if echo $argv[1] | grep -Eq '^(github):.+/.+$'
+    if echo "$argv[1]" | grep -Eq '^[a-z]+:.+/.+$'
         nix run $argv[1] -- $argv[2..]
     else
         nix run nixpkgs#$argv[1] -- $argv[2..]
