@@ -126,7 +126,7 @@
 
   network = {
     format-wifi = "{essid} ({signalStrength}%) ";
-    on-click = "${pkgs.foot}/bin/foot -t nmtui -e nmtui";
+    on-click = "${pkgs.foot}/bin/foot -a nmtui nmtui";
   };
   privacy = {
     icon-size = 18;

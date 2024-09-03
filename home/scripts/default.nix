@@ -5,14 +5,14 @@
   ...
 }:
 let
-  inherit (pkgs.writers) writeFishBin writeBashBin;
+  inherit (pkgs.writers) writeFishBin;
   nixos-rebuild =
     name: word:
-    pkgs.writers.writeBashBin name ''
-      env --chdir $HOME/.nixconf sudo nixos-rebuild ${word} --flake .#$(hostname) \
-          && ${lib.my.checkPath pkgs.libnotify "notify-send"} nixos-rebuild "Rebuild complete" \
-              -a nixos-rebuild \
-              -i ${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg
+    writeFishBin name ''
+      ${pkgs.nh}/bin/nh os ${word} $HOME/.nixconf $argv \
+        && ${lib.my.checkPath pkgs.libnotify "notify-send"} nixos-rebuild "Rebuild complete" \
+            -a nixos-rebuild \
+            -i ${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg
     '';
 in
 {
@@ -58,9 +58,9 @@ in
 
   getext = pkgs.writeScriptBin "ls | grep -E \"\.[a-zA-Z0-9]+$\" --only-matching  | sort | uniq";
 
-  rpaste = writeBashBin "rpaste" ''
+  rpaste = writeFishBin "rpaste" ''
     export $(cat ${config.age.secrets.rustypaste.path} | xargs)
-    curl -F "file=@$1" -H "Authorization: $AUTH_TOKEN" https://rusty.ccnlc.eu/
+    ${pkgs.rustypaste-cli}/bin/rpaste -a "$AUTH_TOKEN" -s "https://rusty.ccnlc.eu/" $argv
   '';
 
   gentest = nixos-rebuild "gentest" "test";
