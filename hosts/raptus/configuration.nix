@@ -2,6 +2,7 @@
   modulesPath,
   lib,
   pkgs,
+  config,
   ...
 }:
 let
@@ -39,11 +40,11 @@ in
   networking.firewall = lib.mkForce {
     enable = true;
     allowedTCPPorts = [
-      22
       443
       5984 # couchdb
       3000 # forgejo
-    ];
+      8000 # rustypaste
+    ] ++ config.services.openssh.ports ++ [ config.services.endlessh.port ];
   };
 
   # User account to run remote builds
@@ -93,7 +94,15 @@ in
       ];
   };
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    ports = [ 56528 ];
+  };
+
+  services.endlessh = {
+    enable = true;
+    port = 22;
+  };
 
   environment.systemPackages = map lib.lowPrio [
     pkgs.curl
