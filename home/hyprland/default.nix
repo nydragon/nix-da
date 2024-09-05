@@ -148,6 +148,7 @@ lib.mkIf osConfig.programs.hyprland.enable {
           "$mod SHIFT, P, exec, ${config.programs.rofi.package}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu"
           "$mod, P, exec, ${pkgs.cliphist}/bin/cliphist wipe & ${pkgs.hyprlock}/bin/hyprlock"
           "$mod SHIFT, C, exec, hyprctl reload"
+          "$mod SHIFT, space, togglefloating"
           "$mod, left, movefocus, l"
           "$mod, right, movefocus, r"
           "$mod, up, movefocus, u"
