@@ -40,6 +40,7 @@ in
   networking.firewall = lib.mkForce {
     enable = true;
     allowedTCPPorts = [
+      80 # for acme challenges
       443
       5984 # couchdb
       3000 # forgejo
@@ -47,22 +48,7 @@ in
     ] ++ config.services.openssh.ports ++ [ config.services.endlessh.port ];
   };
 
-  # User account to run remote builds
-  users.users.remote-build = {
-    isSystemUser = true;
-    hashedPassword = ""; # Only allow login via ssh
-    openssh.authorizedKeys.keys = sshAccess;
-    shell = pkgs.bash;
-    group = "remote-build";
-    extraGroups = [ "wheel" ];
-  };
-
-  security.sudo.wheelNeedsPassword = false;
-
-  users.groups.remote-build = { };
-
-  # Ensure the user can build derivations
-  nix.settings.trusted-users = [ "remote-build" ];
+  age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   security.acme.defaults.email = "admin@ccnlc.eu";
   security.acme.acceptTerms = true;
@@ -97,6 +83,8 @@ in
   services.openssh = {
     enable = true;
     ports = [ 56528 ];
+    # Having automatic generation enabled breaks agenix
+    #hostKeys = [ ];
   };
 
   services.endlessh = {

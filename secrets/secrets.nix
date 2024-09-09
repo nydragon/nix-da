@@ -8,10 +8,9 @@ let
     userBrontes
   ];
 
-  raptus = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIErbhkpCL0DuJQTxeTqxtrGvELCQFkyZmhTZ8fagszOU";
-  systems = [ raptus ];
+  raptus = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKdpjGR/pV1roktZdKIVVWqds0JB+x1ksfyQmYPMLK7o";
 in
 {
-  "couchdb.age".publicKeys = [ raptus ];
+  "couchdb.age".publicKeys = [ raptus ] ++ users;
   "rustypaste.age".publicKeys = [ raptus ] ++ users;
 }
