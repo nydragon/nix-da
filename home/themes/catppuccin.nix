@@ -4,7 +4,7 @@ let
     s: if (builtins.pathExists s) then (builtins.baseNameOf s) else throw "${s} does not exist";
 in
 rec {
-  qt.platformTheme.name = "gtk";
+  qt.platformTheme.name = "gnome";
 
   dconf = {
     enable = true;
