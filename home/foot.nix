@@ -6,7 +6,6 @@
         term = "xterm-256color";
 
         font = "NotoSansM Nerd Font Mono:size=13";
-        dpi-aware = "yes";
       };
 
       mouse = {
