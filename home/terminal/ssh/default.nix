@@ -16,7 +16,7 @@
       vps = {
         hostname = "vps.ccnlc.eu";
         user = "root";
-        port = 22;
+        port = 56528;
       };
     };
   };
