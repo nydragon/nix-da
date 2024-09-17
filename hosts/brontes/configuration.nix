@@ -61,7 +61,10 @@
     };
   };
 
-  age.identityPaths = [ "/home/ny/.ssh/id_ed25519" ];
+  age.identityPaths = [
+    "/etc/ssh/ssh_host_ed25519_key"
+  ];
+
   # Necessary for Nautilus to display trash, DVDs and for gnome-disk-utility to show file systems
   services.gvfs.enable = true;
 
