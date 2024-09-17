@@ -9,7 +9,7 @@ let
   nixos-rebuild =
     name: word:
     writeFishBin name ''
-      ${pkgs.nh}/bin/nh os ${word} $HOME/.nixconf $argv \
+      env --chdir ~/.nixconf ${pkgs.nh}/bin/nh os ${word} . $argv \
         && ${lib.my.checkPath pkgs.libnotify "notify-send"} nixos-rebuild "Rebuild complete" \
             -a nixos-rebuild \
             -i ${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg
