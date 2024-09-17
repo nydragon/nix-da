@@ -33,4 +33,7 @@
         username = "ny";
       };
     };
+
+  validatePath =
+    s: if (builtins.pathExists s) then (builtins.baseNameOf s) else throw "${s} does not exist";
 }
