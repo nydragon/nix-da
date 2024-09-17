@@ -7,8 +7,11 @@
 let
   inherit (lib.my) validatePath;
 in
-rec {
-  qt.platformTheme.name = "gnome";
+{
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk";
+  };
 
   dconf = {
     enable = true;
