@@ -32,6 +32,8 @@
       url = "github:nydragon/nysh";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?rev=0f594732b063a90d44df8c5d402d658f27471dfe&submodules=1";
   };
 
   outputs =

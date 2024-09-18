@@ -37,5 +37,11 @@
     })
 
     (final: prev: { nysh = inputs.nysh.defaultPackage.${prev.pkgs.system}; })
+
+    (final: prev: { hyprland = inputs.hyprland.packages.${final.stdenv.hostPlatform.system}.hyprland; })
+    (final: prev: {
+      xdg-desktop-portal-hyprland =
+        inputs.hyprland.packages.${final.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    })
   ];
 }
