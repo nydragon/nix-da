@@ -41,6 +41,8 @@
     HibernateDelaySec=1200
   '';
 
+  programs.pulseview.enable = true;
+
   specialisation = {
     gpu.configuration = {
       imports = [ inputs.nixos-hardware.nixosModules.dell-xps-15-9510-nvidia ];

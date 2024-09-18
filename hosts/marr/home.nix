@@ -51,7 +51,6 @@
         varia
         signal-desktop
         calibre
-        pulseview
         foot
 
         # Proprietary

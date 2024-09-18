@@ -1,9 +1,7 @@
 { lib, ... }:
 let
   inherit (lib.types) bool array string;
-
 in
-
 {
   options = {
     device = {

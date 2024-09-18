@@ -26,6 +26,7 @@
       modules = [
         "${self}/hosts/${hostname}/configuration.nix"
         "${self}/options"
+        "${self}/options/pulseview.nix"
         { networking.hostName = hostname; }
       ] ++ extraModules;
       specialArgs = {

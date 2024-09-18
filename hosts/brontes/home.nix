@@ -56,7 +56,6 @@
         soundconverter
         foliate
         kid3
-        pulseview
         prismlauncher
 
         # proprietary
