@@ -33,7 +33,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?rev=0f594732b063a90d44df8c5d402d658f27471dfe&submodules=1";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=918d8340afd652b011b937d29d5eea0be08467f5";
   };
 
   outputs =
