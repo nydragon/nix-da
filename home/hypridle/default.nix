@@ -4,7 +4,7 @@
   osConfig,
   ...
 }:
-lib.mkIf osConfig.programs.hyprland.enable {
+lib.mkIf (osConfig.programs.hyprland.enable || osConfig.programs.sway.enable) {
   services.hypridle = {
     enable = true;
     settings = {

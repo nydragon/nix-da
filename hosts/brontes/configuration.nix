@@ -41,7 +41,7 @@
     fish.enable = true;
     firefox.enable = true;
     thunderbird.enable = true;
-    hyprland.enable = true;
+    sway.enable = true;
   };
 
   security.polkit.enable = true;
@@ -83,6 +83,7 @@
     eza
     bat
     swaynotificationcenter
+    pop-icon-theme
   ];
 
   system.stateVersion = "24.05";

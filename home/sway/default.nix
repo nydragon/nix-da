@@ -3,16 +3,10 @@
   pkgs,
   config,
   lib,
+  osConfig,
   ...
 }:
-{
-  imports = [
-    ./swayidle.nix
-    ./swaylock.nix
-    ./../swaync
-    ./../waybar
-  ];
-
+lib.mkIf osConfig.programs.sway.enable {
   wayland.windowManager.sway =
     let
       homeDirectory = config.home.homeDirectory;
@@ -60,7 +54,7 @@
             mod = config.wayland.windowManager.sway.config.modifier;
           in
           lib.mkOptionDefault {
-            "${mod}+p" = "exec ${pkgs.cliphist}/bin/cliphist wipe & ${pkgs.swaylock}/bin/swaylock";
+            "${mod}+p" = "${pkgs.hyprlock}/bin/hyprlock";
 
             "${mod}+Shift+p" = "exec rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
             # Reload the config file
@@ -92,8 +86,8 @@
             "--locked XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
             "--locked XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
             "Print" = "exec ${pkgs.scripts.screenshot}/bin/screenshot";
-            "${mod}+u" = "exec ${pkgs.scripts.screenshot}/bin/screenshot";
-            "${mod}+Shift+u" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.satty}/bin/satty -f - --fullscreen";
+            "${mod}+u" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot -o ~/Pictures/screenshots -m region";
+            "${mod}+Shift+u" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot --raw -m region | ${pkgs.satty}/bin/satty -f - --fullscreen";
 
             #: Workspace movement {{{
             "--input-device=${inputs.kb.builtin} ${mod}+ampersand" = "workspace number 1";
@@ -134,10 +128,6 @@
           {
             command = "${pkgs.swaynotificationcenter}/bin/swaync-client --reload-config --reload-css";
             always = true;
-          }
-          {
-            # Copy all copied values into the cliphist store
-            command = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store -max-items 10";
           }
         ];
         #: }}}

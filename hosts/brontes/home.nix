@@ -10,7 +10,6 @@
       ../../home/rofi
       ../../home/swaync
       ../../home/waybar
-      ../../home/hyprlock
       ../../home/hyprpaper
       ../../home/themes/catppuccin.nix
       ../../home
@@ -35,7 +34,6 @@
         keepassxc
         kdeconnect
         nextcloud-client
-        cliphist
         digikam
         fragments
         element-desktop

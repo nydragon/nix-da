@@ -3,9 +3,11 @@
   imports = [
     ./hypridle
     ./hyprland
+    ./hyprlock
     ./foot.nix
     ./graphical
     ./terminal
     ./rofi
+    ./sway
   ];
 }

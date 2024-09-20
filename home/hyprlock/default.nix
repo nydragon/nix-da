@@ -1,4 +1,5 @@
-{
+{ lib, osConfig, ... }:
+lib.mkIf (osConfig.programs.hyprland.enable || osConfig.programs.sway.enable) {
   programs.hyprlock = {
     enable = true;
     settings = {
