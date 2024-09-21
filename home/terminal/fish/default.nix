@@ -10,8 +10,9 @@
       cat = "bat";
       sd = ''cd "$(dirname "$HOME/$(env --chdir ~ fzf)")"'';
       mkdir = "mkdir --parent";
-      cp = "cp -i";
-      mv = "mv -i";
+      cp = "cp -vi";
+      mv = "mv -vi";
+      rm = "rm -v";
     };
     functions = {
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";

@@ -86,5 +86,7 @@
     pop-icon-theme
   ];
 
+  media.enableAll = true;
+
   system.stateVersion = "24.05";
 }

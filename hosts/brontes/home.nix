@@ -41,7 +41,6 @@
         loupe
         seahorse
         gimp
-        vlc
         pavucontrol
         thunderbird
         keepassxc
@@ -49,12 +48,11 @@
         protonmail-bridge-gui
         varia
         signal-desktop
-        calibre
         tagger
-        soundconverter
-        foliate
-        kid3
         prismlauncher
+
+        kid3
+        soundconverter
 
         # proprietary
         obsidian
