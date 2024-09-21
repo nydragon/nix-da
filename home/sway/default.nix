@@ -54,7 +54,7 @@ lib.mkIf osConfig.programs.sway.enable {
             mod = config.wayland.windowManager.sway.config.modifier;
           in
           lib.mkOptionDefault {
-            "${mod}+p" = "${pkgs.hyprlock}/bin/hyprlock";
+            "${mod}+p" = "exec ${pkgs.hyprlock}/bin/hyprlock";
 
             "${mod}+Shift+p" = "exec rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
             # Reload the config file
@@ -86,8 +86,8 @@ lib.mkIf osConfig.programs.sway.enable {
             "--locked XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
             "--locked XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
             "Print" = "exec ${pkgs.scripts.screenshot}/bin/screenshot";
-            "${mod}+u" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot -o ~/Pictures/screenshots -m region";
-            "${mod}+Shift+u" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -r -z & ${pkgs.hyprshot}/bin/hyprshot --raw -m region | ${pkgs.satty}/bin/satty -f - --fullscreen";
+            "${mod}+u" = "exec ${pkgs.hyprshot}/bin/hyprshot -o ~/Pictures/screenshots -m region";
+            "${mod}+Shift+u" = "exec ${pkgs.hyprshot}/bin/hyprshot --raw -m region | ${pkgs.satty}/bin/satty -f - --fullscreen";
 
             #: Workspace movement {{{
             "--input-device=${inputs.kb.builtin} ${mod}+ampersand" = "workspace number 1";
