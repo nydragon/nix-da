@@ -20,5 +20,6 @@
     ./system/audio.nix
     ./secrets.nix
     ./portals.nix
+    ./themes
   ];
 }

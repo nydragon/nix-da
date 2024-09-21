@@ -8,11 +8,6 @@ let
   inherit (lib.my) validatePath;
 in
 {
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
-  };
-
   dconf = {
     enable = true;
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
